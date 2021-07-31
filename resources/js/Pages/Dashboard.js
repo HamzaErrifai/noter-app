@@ -1,5 +1,6 @@
 import Authenticated from "@/Layouts/Authenticated";
 import React from "react";
+import NavBar from "./NavBar";
 
 export default function Dashboard(props) {
     return (
@@ -12,6 +13,7 @@ export default function Dashboard(props) {
         //         </div>
         //     </div> */}
         // </Authenticated>
-        <h1 className="shadow-sm mt-5">Dashboard</h1>
+
+        <NavBar auth={props.auth} />
     );
 }
