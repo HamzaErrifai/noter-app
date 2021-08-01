@@ -15,6 +15,7 @@ function Main() {
             <NoteList data={notes} />
             <AddNote/>
             <SmallFooter/>
+            
         </>
     );
 }

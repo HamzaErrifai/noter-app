@@ -2,4 +2,5 @@
 
 @section('content')
     <div id="main"></div>
+    <div id="portal-root"></div>
 @endsection

@@ -14,7 +14,7 @@ function NavBar(props) {
             </a>
 
             <input
-                className="form-control search-bar shadow-sm ml-auto mr-auto z-index-10" 
+                className="form-control search-bar shadow-sm ml-auto mr-auto z-index-10"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -26,8 +26,6 @@ function NavBar(props) {
             >
                 <i className="fas fa-bars"></i>
             </a>
-
-            
         </nav>
     );
 }
