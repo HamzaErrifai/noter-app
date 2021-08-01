@@ -10,7 +10,6 @@ function NoteList() {
     //#region methods
     const addNote = (note) => {
         setNotes((prevNotes) => prevNotes.concat(note).reverse());
-        console.log(notes);
     };
     //#endregion
 

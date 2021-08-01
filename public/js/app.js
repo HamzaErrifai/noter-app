@@ -1979,7 +1979,8 @@ function AddNote(props) {
 
     setTitle("");
     setContent("");
-    setBgColor("gray");
+    setBgColor("gray"); //close portal
+
     setTimeout(function () {
       setShowPortal(false);
     }, 100);
@@ -2337,7 +2338,6 @@ function NoteList() {
     setNotes(function (prevNotes) {
       return prevNotes.concat(note).reverse();
     });
-    console.log(notes);
   }; //#endregion
   //#region use effect
 

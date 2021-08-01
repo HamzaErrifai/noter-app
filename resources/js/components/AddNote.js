@@ -19,12 +19,16 @@ function AddNote(props) {
             pinned: 0,
             color: bgColor,
         };
+
         //push in db and pull
         axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
+
         //reset form
         setTitle("");
         setContent("");
         setBgColor("gray");
+
+        //close portal
         setTimeout(() => {
             setShowPortal(false);
         }, 100);

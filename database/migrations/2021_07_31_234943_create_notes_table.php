@@ -19,7 +19,7 @@ class CreateNotesTable extends Migration
             $table->text('content')->nullable();
             $table->boolean('archieved')->default(0);
             $table->boolean('pinned')->default(0);
-            $table->string('color')->default('gray');
+            $table->string('color')->default('#808080');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
