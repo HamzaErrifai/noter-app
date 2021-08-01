@@ -1938,6 +1938,26 @@ function AddNote() {
       showPortal = _useState2[0],
       setShowPortal = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("gray"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      bgColor = _useState4[0],
+      setbgColor = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      showPalette = _useState6[0],
+      setPalette = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Title"),
+      _useState8 = _slicedToArray(_useState7, 2),
+      title = _useState8[0],
+      setTitle = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Body"),
+      _useState10 = _slicedToArray(_useState9, 2),
+      content = _useState10[0],
+      setContent = _useState10[1];
+
   var closePortal = function closePortal() {
     setTimeout(function () {
       setShowPortal(false);
@@ -1958,17 +1978,33 @@ function AddNote() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
-        value: "Note Title"
+        onChange: function onChange(e) {
+          setTitle(e.target.value);
+        },
+        value: title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
         className: "txt-area-note",
-        value: "Note BOdy"
+        value: content,
+        onChange: function onChange(e) {
+          setContent(e.target.value);
+        }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "note-utils d-flex justify-content-between",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "#",
+          onClick: function onClick() {
+            setPalette(!showPalette);
+          },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
             className: "fas fa-palette"
           })
+        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "color",
+          onChange: function onChange(e) {
+            e.preventDefault;
+            setbgColor(e.target.value); // setPalette(false);
+          },
+          value: bgColor
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "#",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
@@ -2185,7 +2221,7 @@ function Note() {
           type: "color",
           onChange: function onChange(e) {
             e.preventDefault;
-            setbgColor(e.target.value);
+            setbgColor(e.target.value); // setPalette(false);
           },
           value: bgColor
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {

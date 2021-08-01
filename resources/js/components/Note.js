@@ -57,6 +57,7 @@ function Note() {
                                 onChange={(e) => {
                                     e.preventDefault;
                                     setbgColor(e.target.value);
+                                    // setPalette(false);
                                 }}
                                 value={bgColor}
                             />
