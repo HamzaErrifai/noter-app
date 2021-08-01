@@ -23,3 +23,8 @@ Route::get('/logout', function () {
   Auth::logout();
   return redirect('/home');
 });
+
+
+
+Route::get('/api/notes', [App\Http\Controllers\NoteController::class, 'getNotes']);
+Route::post('/api/addnote', [App\Http\Controllers\NoteController::class, 'addNote']);

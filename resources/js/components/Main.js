@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import AddNote from "./AddNote";
@@ -6,16 +7,11 @@ import SmallFooter from "./inc/SmallFooter";
 import NoteList from "./NoteList";
 
 function Main() {
-    const [notes, setNotes] = useState([]);
-    useEffect(() => {
-    }, []);
     return (
         <>
             <NavBar />
-            <NoteList data={notes} />
-            <AddNote/>
-            <SmallFooter/>
-            
+            <NoteList />
+            <SmallFooter />
         </>
     );
 }

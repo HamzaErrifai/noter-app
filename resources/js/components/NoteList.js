@@ -1,39 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import AddNote from "./AddNote";
 import Note from "./Note";
 
-function NoteList(props) {
-    // return props?.data?.map((elm) => {
-    //     <Note data={elm} key={elm.id} />;
-    // });
+function NoteList() {
+    //#region vars
+    const [notes, setNotes] = useState([]);
+    //#endregion
+
+    //#region methods
+    const addNote = (note) => {
+        setNotes((prevNotes) => prevNotes.concat(note).reverse());
+        console.log(notes);
+    };
+    //#endregion
+
+    //#region use effect
+    useEffect(() => {
+        axios.get("/api/notes").then((resp) => {
+            setNotes(resp.data.reverse());
+        });
+    }, []);
+    //#endregion
+
     return (
-        <div className="container mt-1 d-flex justify-content-center flex-column note-list">
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-                <Note />
-        </div>
+        <>
+            <AddNote addNote={addNote} />
+            <div className="container mt-1 d-flex justify-content-center flex-column note-list">
+                {notes.map((elm) => {
+                    return <Note data={elm} key={elm.id} />;
+                })}
+            </div>
+        </>
     );
 }
 

@@ -1,15 +1,30 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
 
-function AddNote() {
+function AddNote(props) {
+    const { addNote } = props;
     const [showPortal, setShowPortal] = useState(false);
-    const [bgColor, setbgColor] = useState("gray");
     const [showPalette, setPalette] = useState(false);
-    
-    const [title, setTitle] = useState("Title");
-    const [content, setContent] = useState("Body");
+
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [bgColor, setbgColor] = useState("gray");
 
     const closePortal = () => {
+        let note = {
+            title: title,
+            content: content,
+            archieved: 0,
+            pinned: 0,
+            color: bgColor,
+        };
+        //push in db and pull
+        // axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
+        //reset form
+        setTitle("");
+        setContent("");
+        setbgColor("gray");
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
@@ -54,7 +69,7 @@ function AddNote() {
                             <input
                                 type="color"
                                 onChange={(e) => {
-                                    e.preventDefault;
+                                    e.preventDefault();
                                     setbgColor(e.target.value);
                                     // setPalette(false);
                                 }}

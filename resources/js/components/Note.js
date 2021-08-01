@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
 
-function Note() {
+function Note(props) {
+    const { data } = props;
     const [showPortal, setShowPortal] = useState(false);
-    const [bgColor, setbgColor] = useState("gray");
     const [showPalette, setPalette] = useState(false);
 
-    const [title, setTitle] = useState("Title");
-    const [content, setContent] = useState("Body");
-
+    const [title, setTitle] = useState(data.title);
+    const [content, setContent] = useState(data.content);
+    const [bgColor, setbgColor] = useState(data.color);
     const closePortal = () => {
+        // exampleData = {
+        //     ...exampleData,
+        //     title: title,
+        //     content: content,
+        //     color: bgColor,
+        // };
+        //modify post
+
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
