@@ -19,7 +19,7 @@ function Note() {
         >
             <h3>Note Title</h3>
             <p>Note BOdy</p>
-            <div className="note-utils d-flex justify-content-between">
+            {/* <div className="note-utils d-flex justify-content-between">
                 <a href="#">
                     <i className="fas fa-palette"></i>
                 </a>
@@ -29,13 +29,13 @@ function Note() {
                 <a href="#">
                     <i className="fas fa-ellipsis-v ml-auto"></i>
                 </a>
-            </div>
+            </div> */}
             {showPortal ? (
                 <Portal show={true} bgColor={bgColor} closePortal={closePortal}>
-                    <input type="text" value="Note Title" />
+                    <input type="text" className="inp-area-note" value="Note Title" />
 
-                    <textarea value="Note BOdy"></textarea>
-                    <div className="note-portal-utils d-flex justify-content-between">
+                    <textarea className="txt-area-note" value="Note BOdy"></textarea>
+                    <div className="note-utils d-flex justify-content-between">
                         <a href="#">
                             <i className="fas fa-palette"></i>
                         </a>
