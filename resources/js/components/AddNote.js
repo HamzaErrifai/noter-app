@@ -12,22 +12,23 @@ function AddNote(props) {
     const [bgColor, setBgColor] = useState("#808080");
 
     const closePortal = () => {
-        let note = {
-            title: title,
-            content: content,
-            archieved: 0,
-            pinned: 0,
-            color: bgColor,
-        };
+        if (title != "" || content != "") {
+            let note = {
+                title: title,
+                content: content,
+                archieved: 0,
+                pinned: 0,
+                color: bgColor,
+            };
 
-        //push in db and pull
-        axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
+            //push and pull from DB
+            axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
 
-        //reset form
-        setTitle("");
-        setContent("");
-        setBgColor("gray");
-
+            //reset form
+            setTitle("");
+            setContent("");
+            setBgColor("gray");
+        }
         //close portal
         setTimeout(() => {
             setShowPortal(false);
@@ -52,6 +53,7 @@ function AddNote(props) {
                         type="text"
                         className="inp-area-note"
                         placeholder="Title"
+                        maxlength="20"
                         onChange={(e) => {
                             setTitle(e.target.value);
                         }}
@@ -76,15 +78,6 @@ function AddNote(props) {
                             <i className="fas fa-palette"></i>
                         </a>
                         {showPalette && (
-                            // <input
-                            //     type="color"
-                            //     onChange={(e) => {
-                            //         e.preventDefault();
-                            //         setBgColor(e.target.value);
-                            //         // setPalette(false);
-                            //     }}
-                            //     value={bgColor}
-                            // />
                             <>
                                 <input
                                     type="color"
@@ -110,6 +103,9 @@ function AddNote(props) {
 
                         <a href="#">
                             <i className="fa fa-archive"></i>
+                        </a>
+                        <a href="#">
+                            <i className="fas fa-thumbtack"></i>
                         </a>
                         <a href="#">
                             <i className="fas fa-ellipsis-v ml-auto"></i>

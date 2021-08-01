@@ -8,16 +8,21 @@ function Note(props) {
 
     const [title, setTitle] = useState(data.title);
     const [content, setContent] = useState(data.content);
-    const [bgColor, setbgColor] = useState(data.color);
-    const closePortal = () => {
-        // exampleData = {
-        //     ...exampleData,
-        //     title: title,
-        //     content: content,
-        //     color: bgColor,
-        // };
-        //modify post
+    const [bgColor, setBgColor] = useState(data.color);
 
+    const closePortal = () => {
+        if (title != "" || content != "") {
+            let note = {
+                title: title,
+                content: content,
+                archieved: 0,
+                pinned: 0,
+                color: bgColor,
+            };
+            //push and pull from DB
+            axios.post(`/api/updatenote/${data.id}`, note);
+        }
+        //close portal
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
@@ -61,19 +66,35 @@ function Note(props) {
                             <i className="fas fa-palette"></i>
                         </a>
                         {showPalette && (
-                            <input
-                                type="color"
-                                onChange={(e) => {
-                                    e.preventDefault;
-                                    setbgColor(e.target.value);
-                                    // setPalette(false);
-                                }}
-                                value={bgColor}
-                            />
+                            <>
+                                <input
+                                    type="color"
+                                    list="presetColors"
+                                    onChange={(e) => {
+                                        e.preventDefault();
+                                        setBgColor(e.target.value);
+                                        // setPalette(false);
+                                    }}
+                                    value={bgColor}
+                                />
+                                <datalist id="presetColors">
+                                    <option>#808080</option>
+                                    <option>#153465</option>
+                                    <option>#67160e</option>
+                                    <option>#135714</option>
+                                    <option>#cca529</option>
+                                    <option>#b45c18</option>
+                                    <option>#341b4d</option>
+                                    <option>#1f385c</option>
+                                </datalist>
+                            </>
                         )}
 
                         <a href="#">
                             <i className="fa fa-archive"></i>
+                        </a>
+                        <a href="#">
+                            <i className="fas fa-thumbtack"></i>
                         </a>
                         <a href="#">
                             <i className="fas fa-ellipsis-v ml-auto"></i>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AddNote from "./AddNote";
 import Note from "./Note";
+import NoWhat from "./utils/NoWhat.js";
 
 function NoteList() {
     //#region vars
     const [notes, setNotes] = useState([]);
+    const [noNotes, setNoNotes] = useState(true);
     //#endregion
 
     //#region methods
@@ -17,6 +19,7 @@ function NoteList() {
     useEffect(() => {
         axios.get("/api/notes").then((resp) => {
             setNotes(resp.data.reverse());
+            if (resp.data.length > 0) setNoNotes(false);
         });
     }, []);
     //#endregion
@@ -28,6 +31,7 @@ function NoteList() {
                 {notes.map((elm) => {
                     return <Note data={elm} key={elm.id} />;
                 })}
+                {noNotes && <NoWhat what="notes" />}
             </div>
         </>
     );

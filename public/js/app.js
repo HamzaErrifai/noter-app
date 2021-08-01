@@ -1965,21 +1965,24 @@ function AddNote(props) {
       setBgColor = _useState10[1];
 
   var closePortal = function closePortal() {
-    var note = {
-      title: title,
-      content: content,
-      archieved: 0,
-      pinned: 0,
-      color: bgColor
-    }; //push in db and pull
+    if (title != "" || content != "") {
+      var note = {
+        title: title,
+        content: content,
+        archieved: 0,
+        pinned: 0,
+        color: bgColor
+      }; //push and pull from DB
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/addnote", note).then(function (resp) {
-      return addNote(resp.data);
-    }); //reset form
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/addnote", note).then(function (resp) {
+        return addNote(resp.data);
+      }); //reset form
 
-    setTitle("");
-    setContent("");
-    setBgColor("gray"); //close portal
+      setTitle("");
+      setContent("");
+      setBgColor("gray");
+    } //close portal
+
 
     setTimeout(function () {
       setShowPortal(false);
@@ -2001,6 +2004,7 @@ function AddNote(props) {
         type: "text",
         className: "inp-area-note",
         placeholder: "Title",
+        maxlength: "20",
         onChange: function onChange(e) {
           setTitle(e.target.value);
         },
@@ -2022,18 +2026,7 @@ function AddNote(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fas fa-palette"
           })
-        }), showPalette &&
-        /*#__PURE__*/
-        // <input
-        //     type="color"
-        //     onChange={(e) => {
-        //         e.preventDefault();
-        //         setBgColor(e.target.value);
-        //         // setPalette(false);
-        //     }}
-        //     value={bgColor}
-        // />
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "color",
             list: "presetColors",
@@ -2064,6 +2057,11 @@ function AddNote(props) {
           href: "#",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fa fa-archive"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+          href: "#",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+            className: "fas fa-thumbtack"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
@@ -2184,6 +2182,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Note(props) {
   var data = props.data;
 
@@ -2210,16 +2209,22 @@ function Note(props) {
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.color),
       _useState10 = _slicedToArray(_useState9, 2),
       bgColor = _useState10[0],
-      setbgColor = _useState10[1];
+      setBgColor = _useState10[1];
 
   var closePortal = function closePortal() {
-    // exampleData = {
-    //     ...exampleData,
-    //     title: title,
-    //     content: content,
-    //     color: bgColor,
-    // };
-    //modify post
+    if (title != "" || content != "") {
+      var note = {
+        title: title,
+        content: content,
+        archieved: 0,
+        pinned: 0,
+        color: bgColor
+      }; //push and pull from DB
+
+      axios.post("/api/updatenote/".concat(data.id), note);
+    } //close portal
+
+
     setTimeout(function () {
       setShowPortal(false);
     }, 100);
@@ -2264,17 +2269,44 @@ function Note(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
             className: "fas fa-palette"
           })
-        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          type: "color",
-          onChange: function onChange(e) {
-            e.preventDefault;
-            setbgColor(e.target.value); // setPalette(false);
-          },
-          value: bgColor
+        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "color",
+            list: "presetColors",
+            onChange: function onChange(e) {
+              e.preventDefault();
+              setBgColor(e.target.value); // setPalette(false);
+            },
+            value: bgColor
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("datalist", {
+            id: "presetColors",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#808080"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#153465"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#67160e"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#135714"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#cca529"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#b45c18"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#341b4d"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              children: "#1f385c"
+            })]
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "#",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
             className: "fa fa-archive"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          href: "#",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "fas fa-thumbtack"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "#",
@@ -2305,7 +2337,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _AddNote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddNote */ "./resources/js/components/AddNote.js");
 /* harmony import */ var _Note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Note */ "./resources/js/components/Note.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _utils_NoWhat_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/NoWhat.js */ "./resources/js/components/utils/NoWhat.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2325,12 +2358,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function NoteList() {
   //#region vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       notes = _useState2[0],
-      setNotes = _useState2[1]; //#endregion
+      setNotes = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      noNotes = _useState4[0],
+      setNoNotes = _useState4[1]; //#endregion
   //#region methods
 
 
@@ -2345,19 +2384,22 @@ function NoteList() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios.get("/api/notes").then(function (resp) {
       setNotes(resp.data.reverse());
+      if (resp.data.length > 0) setNoNotes(false);
     });
   }, []); //#endregion
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
       addNote: addNote
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",
-      children: notes.map(function (elm) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: [notes.map(function (elm) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
           data: elm
         }, elm.id);
-      })
+      }), noNotes && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_NoWhat_js__WEBPACK_IMPORTED_MODULE_3__.default, {
+        what: "notes"
+      })]
     })]
   });
 }
@@ -2622,6 +2664,34 @@ function SmallFooter() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SmallFooter);
+
+/***/ }),
+
+/***/ "./resources/js/components/utils/NoWhat.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/utils/NoWhat.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function NoWhat(_ref) {
+  var what = _ref.what;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "mt-5 d-flex justify-content-center align-self-center",
+    children: ["No ", what]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NoWhat);
 
 /***/ }),
 
