@@ -140,6 +140,15 @@ body {
     border: none;
     outline: none;
 }
+.txt-area-note::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.733);
+    opacity: 1; /* Firefox */
+}
+.txt-area-note::-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.733);
+}
 
 .inp-area-note {
     width: 100%;
@@ -147,6 +156,15 @@ body {
     background: transparent;
     color: white;
     font-size: 2em;
+}
+.inp-area-note::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.733);
+    opacity: 1; /* Firefox */
+}
+.inp-area-note::-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.733);
 }
 
 .inp-area-note:focus-visible {

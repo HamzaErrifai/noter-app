@@ -1935,6 +1935,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function AddNote(props) {
   var addNote = props.addNote;
 
@@ -1958,10 +1959,10 @@ function AddNote(props) {
       content = _useState8[0],
       setContent = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("gray"),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("#808080"),
       _useState10 = _slicedToArray(_useState9, 2),
       bgColor = _useState10[0],
-      setbgColor = _useState10[1];
+      setBgColor = _useState10[1];
 
   var closePortal = function closePortal() {
     var note = {
@@ -1971,12 +1972,14 @@ function AddNote(props) {
       pinned: 0,
       color: bgColor
     }; //push in db and pull
-    // axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
-    //reset form
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/addnote", note).then(function (resp) {
+      return addNote(resp.data);
+    }); //reset form
 
     setTitle("");
     setContent("");
-    setbgColor("gray");
+    setBgColor("gray");
     setTimeout(function () {
       setShowPortal(false);
     }, 100);
@@ -1991,11 +1994,12 @@ function AddNote(props) {
       className: "fas fa-plus"
     }), showPortal ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_2__.default, {
       show: true,
-      bgColor: "gray",
+      bgColor: "#808080",
       closePortal: closePortal,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
+        placeholder: "Title",
         onChange: function onChange(e) {
           setTitle(e.target.value);
         },
@@ -2005,7 +2009,8 @@ function AddNote(props) {
         value: content,
         onChange: function onChange(e) {
           setContent(e.target.value);
-        }
+        },
+        placeholder: "Content"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "note-utils d-flex justify-content-between",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
@@ -2016,13 +2021,44 @@ function AddNote(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fas fa-palette"
           })
-        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "color",
-          onChange: function onChange(e) {
-            e.preventDefault();
-            setbgColor(e.target.value); // setPalette(false);
-          },
-          value: bgColor
+        }), showPalette &&
+        /*#__PURE__*/
+        // <input
+        //     type="color"
+        //     onChange={(e) => {
+        //         e.preventDefault();
+        //         setBgColor(e.target.value);
+        //         // setPalette(false);
+        //     }}
+        //     value={bgColor}
+        // />
+        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "color",
+            list: "presetColors",
+            onChange: function onChange(e) {
+              e.preventDefault();
+              setBgColor(e.target.value); // setPalette(false);
+            },
+            value: bgColor
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("datalist", {
+            id: "presetColors",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#808080"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#153465"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#67160e"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#135714"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#cca529"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#b45c18"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "#341b4d"
+            })]
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {

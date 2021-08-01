@@ -9,7 +9,7 @@ function AddNote(props) {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [bgColor, setbgColor] = useState("gray");
+    const [bgColor, setBgColor] = useState("#808080");
 
     const closePortal = () => {
         let note = {
@@ -20,11 +20,11 @@ function AddNote(props) {
             color: bgColor,
         };
         //push in db and pull
-        // axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
+        axios.post("/api/addnote", note).then((resp) => addNote(resp.data));
         //reset form
         setTitle("");
         setContent("");
-        setbgColor("gray");
+        setBgColor("gray");
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
@@ -39,10 +39,15 @@ function AddNote(props) {
         >
             <i className="fas fa-plus"></i>
             {showPortal ? (
-                <Portal show={true} bgColor={"gray"} closePortal={closePortal}>
+                <Portal
+                    show={true}
+                    bgColor={"#808080"}
+                    closePortal={closePortal}
+                >
                     <input
                         type="text"
                         className="inp-area-note"
+                        placeholder="Title"
                         onChange={(e) => {
                             setTitle(e.target.value);
                         }}
@@ -55,6 +60,7 @@ function AddNote(props) {
                         onChange={(e) => {
                             setContent(e.target.value);
                         }}
+                        placeholder="Content"
                     ></textarea>
                     <div className="note-utils d-flex justify-content-between">
                         <a
@@ -66,15 +72,36 @@ function AddNote(props) {
                             <i className="fas fa-palette"></i>
                         </a>
                         {showPalette && (
-                            <input
-                                type="color"
-                                onChange={(e) => {
-                                    e.preventDefault();
-                                    setbgColor(e.target.value);
-                                    // setPalette(false);
-                                }}
-                                value={bgColor}
-                            />
+                            // <input
+                            //     type="color"
+                            //     onChange={(e) => {
+                            //         e.preventDefault();
+                            //         setBgColor(e.target.value);
+                            //         // setPalette(false);
+                            //     }}
+                            //     value={bgColor}
+                            // />
+                            <>
+                                <input
+                                    type="color"
+                                    list="presetColors"
+                                    onChange={(e) => {
+                                        e.preventDefault();
+                                        setBgColor(e.target.value);
+                                        // setPalette(false);
+                                    }}
+                                    value={bgColor}
+                                />
+                                <datalist id="presetColors">
+                                    <option>#808080</option>
+                                    <option>#153465</option>
+                                    <option>#67160e</option>
+                                    <option>#135714</option>
+                                    <option>#cca529</option>
+                                    <option>#b45c18</option>
+                                    <option>#341b4d</option>
+                                </datalist>
+                            </>
                         )}
 
                         <a href="#">
