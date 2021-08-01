@@ -18,8 +18,7 @@ function Portal(props) {
                 </a>
             </h2>
             <div className="container mt-4 portal-content">
-
-            {props.children}
+                {props.children}
             </div>
         </div>,
         document.getElementById("portal-root")
