@@ -2006,9 +2006,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function Note() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "This is a note"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "col note-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: "Note Title"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      children: "Note BOdy"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: "Utils "
+    })]
   });
 }
 
@@ -2034,14 +2042,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function NoteList(props) {
-  var _props$data;
 
-  return props === null || props === void 0 ? void 0 : (_props$data = props.data) === null || _props$data === void 0 ? void 0 : _props$data.map(function (elm) {
-    /*#__PURE__*/
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_1__.default, {
-      data: elm
-    }, elm.id);
+function NoteList(props) {
+  // return props?.data?.map((elm) => {
+  //     <Note data={elm} key={elm.id} />;
+  // });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "container mt-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_1__.default, {})]
+    })
   });
 }
 

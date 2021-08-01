@@ -2,8 +2,10 @@ import React from 'react'
 
 function Note() {
   return (
-    <div>
-      This is a note
+    <div className="col note-container">
+      <h3>Note Title</h3>
+      <p>Note BOdy</p>
+      <div>Utils </div>
     </div>
   )
 }
