@@ -2029,7 +2029,10 @@ function Note() {
       showPortal = _useState2[0],
       setShowPortal = _useState2[1];
 
-  var bgColor = "darkcyan";
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("darkcyan"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      bgColor = _useState4[0],
+      setbgColor = _useState4[1];
 
   var closePortal = function closePortal() {
     setTimeout(function () {
@@ -2157,7 +2160,7 @@ function NavBar(props) {
       showPortal = _useState2[0],
       setShowPortal = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("nothing"),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState4 = _slicedToArray(_useState3, 2),
       what = _useState4[0],
       setWhat = _useState4[1];
@@ -2176,8 +2179,10 @@ function NavBar(props) {
         });
         break;
 
-      case "nothing":
-        return null;
+      case "more":
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+          children: "More"
+        });
         break;
 
       default:
@@ -2216,6 +2221,9 @@ function NavBar(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
       className: "ml-auto text-dark bg-white rounded-circle shadow-sm burger-menu z-index-10",
       href: "#",
+      onClick: function onClick() {
+        return whatToshow("more");
+      },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
         className: "fas fa-bars"
       })

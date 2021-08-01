@@ -3,7 +3,7 @@ import Portal from "./Portal";
 
 function NavBar(props) {
     const [showPortal, setShowPortal] = useState(false);
-    const [what, setWhat] = useState("nothing");
+    const [what, setWhat] = useState();
     const whatToshow = (val) => {
         console.log(val);
         setWhat(val);
@@ -14,8 +14,8 @@ function NavBar(props) {
             case "profile":
                 return <h1>Profile</h1>;
                 break;
-            case "nothing":
-                return null;
+            case "more":
+                return <h1>More</h1>;
                 break;
             default:
                 return null;
@@ -53,11 +53,16 @@ function NavBar(props) {
             <a
                 className="ml-auto text-dark bg-white rounded-circle shadow-sm burger-menu z-index-10"
                 href="#"
+                onClick={() => whatToshow("more")}
             >
                 <i className="fas fa-bars"></i>
             </a>
             {showPortal && (
-                <Portal show={true} bgColor={"#343a40"} closePortal={closePortal}>
+                <Portal
+                    show={true}
+                    bgColor={"#343a40"}
+                    closePortal={closePortal}
+                >
                     {getWhat()}
                 </Portal>
             )}

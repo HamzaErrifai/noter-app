@@ -3,7 +3,7 @@ import Portal from "./inc/Portal";
 
 function Note() {
     const [showPortal, setShowPortal] = useState(false);
-    let bgColor = "darkcyan";
+    const [bgColor, setbgColor] = useState("darkcyan")
     const closePortal = () => {
         setTimeout(() => {
             setShowPortal(false);
