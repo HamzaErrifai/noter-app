@@ -1,13 +1,15 @@
 .search-bar {
     width: 70%;
+    text-align: center;
 }
 
 .burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 35px !important;
     height: 35px !important;
-    text-align: center;
     font-size: 1.1em;
-    padding: 5px;
 }
 
 .bg-blur {
@@ -33,7 +35,7 @@
     bottom: 20px;
     right: 20px;
     text-align: center;
-    background-color: rgba(0, 100, 0, 0.705);
+    background-color: rgba(153, 205, 50, 0.794);
     font-size: 1.1em;
     color: white;
     width: 50px;

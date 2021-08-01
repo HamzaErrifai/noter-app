@@ -2068,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function NavBar(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
-    className: "navbar navbar-light justify-content-between",
+    className: "navbar navbar-light",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "bg-blur"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -2078,10 +2078,10 @@ function NavBar(props) {
         src: "/imgs/photoHolder.svg",
         width: "30",
         height: "30",
-        className: "rounded-circle shadow-sm"
+        className: "rounded-circle shadow"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      className: "form-control search-bar shadow-sm",
+      className: "form-control search-bar shadow-sm ml-auto mr-auto",
       type: "search",
       placeholder: "Search",
       "aria-label": "Search"

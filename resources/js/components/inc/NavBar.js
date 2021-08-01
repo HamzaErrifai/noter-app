@@ -2,19 +2,19 @@ import React from "react";
 
 function NavBar(props) {
     return (
-        <nav className="navbar navbar-light justify-content-between">
+        <nav className="navbar navbar-light">
             <div className="bg-blur"></div>
             <a className="navbar-brand " href="#">
                 <img
                     src="/imgs/photoHolder.svg"
                     width="30"
                     height="30"
-                    className="rounded-circle shadow-sm"
+                    className="rounded-circle shadow"
                 />
             </a>
 
             <input
-                className="form-control search-bar shadow-sm"
+                className="form-control search-bar shadow-sm ml-auto mr-auto" 
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
