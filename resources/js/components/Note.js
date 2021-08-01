@@ -5,7 +5,7 @@ function Note() {
     <div className="col note-container">
       <h3>Note Title</h3>
       <p>Note BOdy</p>
-      <div>Utils </div>
+      <div className="note-utils">Utils </div>
     </div>
   )
 }

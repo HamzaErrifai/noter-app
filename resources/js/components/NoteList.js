@@ -7,10 +7,10 @@ function NoteList(props) {
     // });
     return (
         <div className="container mt-5">
-            <div className="row">
+            {/* <div className="row "> */}
                 <Note />
                 <Note />
-            </div>
+            {/* </div> */}
             
         </div>
     );
