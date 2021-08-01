@@ -55,13 +55,25 @@
     margin-top: 10px;
     padding: 20px;
 }
-.note-utils {
+.note-utils a {
     /* display: none; */
     color: transparent;
     transition-timing-function: ease;
-    transition-duration: 200ms;
+    transition-duration: 300ms;
 }
-.note-container:hover > .note-utils {
+.note-container:hover > .note-utils a {
     /* display: block; */
     color: white;
+}
+
+.note-utils a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+.note-utils a:hover {
+    background-color: rgba(54, 54, 54, 0.315);
 }
