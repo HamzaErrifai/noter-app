@@ -1,21 +1,22 @@
 import React, { useState } from "react";
+import More from "../More";
+import Profile from "../Profile";
 import Portal from "./Portal";
 
 function NavBar(props) {
     const [showPortal, setShowPortal] = useState(false);
     const [what, setWhat] = useState();
     const whatToshow = (val) => {
-        console.log(val);
         setWhat(val);
         setShowPortal(true);
     };
     const getWhat = () => {
         switch (what) {
             case "profile":
-                return <h1>Profile</h1>;
+                return <Profile/>;
                 break;
             case "more":
-                return <h1>More</h1>;
+                return <More/>;
                 break;
             default:
                 return null;

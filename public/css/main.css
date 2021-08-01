@@ -1,6 +1,7 @@
 html {
     position: relative;
     min-height: 100%;
+    scroll-behavior: smooth;
 }
 body {
     height: 100%;
@@ -151,4 +152,10 @@ body {
 .inp-area-note:focus-visible {
     border: none;
     outline: none;
+}
+.logout-btn {
+    background-color: transparent;
+    font-size: 1.2em;
+    border-radius: 10px;
+    color: #e3342f;
 }
