@@ -2300,8 +2300,8 @@ function Profile() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "d-flex justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-        src: "https://via.placeholder.com/150",
-        className: "rounded-circle",
+        src: "/storage/".concat(window.Laravel.user.photo),
+        className: "rounded-circle bg-white",
         width: "100px",
         height: "100px"
       })
@@ -2410,10 +2410,10 @@ function NavBar(props) {
         return whatToshow("profile");
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        src: "/imgs/photoHolder.svg",
+        src: "/storage/".concat(window.Laravel.user.photo),
         width: "30",
         height: "30",
-        className: "rounded-circle shadow"
+        className: "rounded-circle shadow bg-white"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       className: "form-control search-bar shadow-sm ml-auto mr-auto z-index-10",

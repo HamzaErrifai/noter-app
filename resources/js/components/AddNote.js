@@ -5,8 +5,10 @@ function AddNote() {
     const [showPortal, setShowPortal] = useState(false);
     const [bgColor, setbgColor] = useState("gray");
     const [showPalette, setPalette] = useState(false);
+    
     const [title, setTitle] = useState("Title");
     const [content, setContent] = useState("Body");
+
     const closePortal = () => {
         setTimeout(() => {
             setShowPortal(false);

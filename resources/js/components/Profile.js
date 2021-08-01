@@ -5,8 +5,8 @@ function Profile() {
         <div className="container">
             <div className="d-flex justify-content-center">
                 <img
-                    src="https://via.placeholder.com/150"
-                    className="rounded-circle"
+                    src={`/storage/${window.Laravel.user.photo}`}
+                    className="rounded-circle bg-white"
                     width="100px"
                     height="100px"
                 />

@@ -13,10 +13,10 @@ function NavBar(props) {
     const getWhat = () => {
         switch (what) {
             case "profile":
-                return <Profile/>;
+                return <Profile />;
                 break;
             case "more":
-                return <More/>;
+                return <More />;
                 break;
             default:
                 return null;
@@ -37,10 +37,10 @@ function NavBar(props) {
                 onClick={() => whatToshow("profile")}
             >
                 <img
-                    src="/imgs/photoHolder.svg"
+                    src={`/storage/${window.Laravel.user.photo}`}
                     width="30"
                     height="30"
-                    className="rounded-circle shadow"
+                    className="rounded-circle shadow bg-white"
                 />
             </a>
 
