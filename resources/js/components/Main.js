@@ -1,24 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import AddNote from "./AddNote";
+import NavBar from "./inc/NavBar";
+import NoteList from "./NoteList";
 
 function Main() {
+    const [notes, setNotes] = useState([]);
+    useEffect(() => {
+    }, []);
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Main Component</div>
-
-                        <div className="card-body">I'm an Main component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <>
+            <NavBar />
+            <NoteList data={notes} />
+            <AddNote/>
+        </>
     );
 }
 
 export default Main;
 
-if (document.getElementById('app')) {
-    ReactDOM.render(<Main />, document.getElementById('app'));
+if (document.getElementById("main")) {
+    ReactDOM.render(<Main />, document.getElementById("main"));
 }

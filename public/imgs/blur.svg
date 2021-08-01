@@ -1,0 +1,9 @@
+<svg id="testSVG" style="position: absolute;left: 0;top: 0;height: 100%;width: 100%;">
+	<defs>
+		<filter id="blurry">
+			<feGaussianBlur stdDeviation="5" in="SourceGraphic">
+			</feGaussianBlur>
+		</filter>
+	</defs>
+	<image x="0" y="0" width="500" height="332" filter="url(#blurry)" />
+</svg>
