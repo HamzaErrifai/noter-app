@@ -6,7 +6,7 @@ function NoteList(props) {
     //     <Note data={elm} key={elm.id} />;
     // });
     return (
-        <div className="container mt-1 d-flex justify-content-center flex-column">
+        <div className="container mt-1 d-flex justify-content-center flex-column note-list">
                 <Note />
                 <Note />
                 <Note />
