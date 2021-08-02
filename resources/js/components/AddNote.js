@@ -53,7 +53,7 @@ function AddNote(props) {
                         type="text"
                         className="inp-area-note"
                         placeholder="Title"
-                        maxlength="20"
+                        maxLength="20"
                         onChange={(e) => {
                             setTitle(e.target.value);
                         }}

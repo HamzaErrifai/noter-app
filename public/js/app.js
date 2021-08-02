@@ -2004,7 +2004,7 @@ function AddNote(props) {
         type: "text",
         className: "inp-area-note",
         placeholder: "Title",
-        maxlength: "20",
+        maxLength: "20",
         onChange: function onChange(e) {
           setTitle(e.target.value);
         },
@@ -2244,6 +2244,7 @@ function Note(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
+        maxLength: "20",
         onChange: function onChange(e) {
           setTitle(e.target.value);
         },

@@ -43,6 +43,7 @@ function Note(props) {
                     <input
                         type="text"
                         className="inp-area-note"
+                        maxLength="20"
                         onChange={(e) => {
                             setTitle(e.target.value);
                         }}
