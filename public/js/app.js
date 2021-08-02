@@ -2550,7 +2550,7 @@ function NavBar(props) {
     var notes = document.querySelectorAll(".note-container");
 
     for (var i = 0; i < notes.length; i++) {
-      if (notes[i].textContent.includes(e.target.value)) {
+      if (notes[i].textContent.toLowerCase().includes(String(e.target.value).toLowerCase())) {
         notes[i].style.display = "block";
       } else notes[i].style.display = "none";
     }
@@ -2638,6 +2638,17 @@ function Portal(props) {
       show = _useState2[0],
       setShow = _useState2[1];
 
+  $(window).on("navigate", function (event, data) {
+    var direction = data.state.direction;
+
+    if (direction == "back") {
+      event.preventDefault();
+      props.closePortal();
+    }
+
+    if (direction == "forward") {// do something else
+    }
+  });
   return /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "portal-show",
     style: {

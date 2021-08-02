@@ -36,7 +36,11 @@ function NavBar(props) {
         //filter notes
         const notes = document.querySelectorAll(".note-container");
         for (let i = 0; i < notes.length; i++) {
-            if (notes[i].textContent.includes(e.target.value)) {
+            if (
+                notes[i].textContent
+                    .toLowerCase()
+                    .includes(String(e.target.value).toLowerCase())
+            ) {
                 notes[i].style.display = "block";
             } else notes[i].style.display = "none";
         }
