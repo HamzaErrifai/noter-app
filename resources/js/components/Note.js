@@ -86,6 +86,7 @@ function Note(props) {
                                     <option>#b45c18</option>
                                     <option>#341b4d</option>
                                     <option>#1f385c</option>
+                                    <option>#008b8b</option>
                                 </datalist>
                             </>
                         )}

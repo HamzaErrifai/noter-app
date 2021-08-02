@@ -97,6 +97,7 @@ function AddNote(props) {
                                     <option>#cca529</option>
                                     <option>#b45c18</option>
                                     <option>#341b4d</option>
+                                    <option>#008b8b</option>
                                 </datalist>
                             </>
                         )}
