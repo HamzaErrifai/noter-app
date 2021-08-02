@@ -2335,6 +2335,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Note */ "./resources/js/components/Note.js");
 /* harmony import */ var _utils_NoWhat_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/NoWhat.js */ "./resources/js/components/utils/NoWhat.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2371,7 +2379,7 @@ function NoteList(props) {
 
   var addNote = function addNote(note) {
     setNotes(function (prevNotes) {
-      return prevNotes.concat(note).reverse();
+      return prevNotes.concat(note);
     });
   }; //#endregion
   //#region use effect
@@ -2379,10 +2387,12 @@ function NoteList(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios.get("/api/notes").then(function (resp) {
-      setNotes(resp.data.reverse());
+      setNotes(resp.data);
       if (resp.data.length > 0) setNoNotes(false);
     });
   }, []); //#endregion
+
+  var shownNotes = _toConsumableArray(notes).reverse();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -2390,7 +2400,7 @@ function NoteList(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",
       id: "note-list",
-      children: [notes.map(function (elm) {
+      children: [shownNotes.map(function (elm) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
           data: elm
         }, elm.id);

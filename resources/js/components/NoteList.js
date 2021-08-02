@@ -11,24 +11,28 @@ function NoteList(props) {
 
     //#region methods
     const addNote = (note) => {
-        setNotes((prevNotes) => prevNotes.concat(note).reverse());
+        setNotes((prevNotes) => prevNotes.concat(note));
     };
     //#endregion
 
     //#region use effect
     useEffect(() => {
         axios.get("/api/notes").then((resp) => {
-            setNotes(resp.data.reverse());
+            setNotes(resp.data);
             if (resp.data.length > 0) setNoNotes(false);
         });
     }, []);
     //#endregion
 
+    const shownNotes = [...notes].reverse();
     return (
         <>
             <AddNote addNote={addNote} />
-            <div className="container mt-1 d-flex justify-content-center flex-column note-list" id="note-list">
-                {notes.map((elm) => {
+            <div
+                className="container mt-1 d-flex justify-content-center flex-column note-list"
+                id="note-list"
+            >
+                {shownNotes.map((elm) => {
                     return <Note data={elm} key={elm.id} />;
                 })}
                 {noNotes && <NoWhat what="notes" />}
