@@ -2391,6 +2391,7 @@ function NoteList(props) {
       if (resp.data.length > 0) setNoNotes(false);
     });
   }, []); //#endregion
+  //reverse the the list of notes
 
   var shownNotes = _toConsumableArray(notes).reverse();
 

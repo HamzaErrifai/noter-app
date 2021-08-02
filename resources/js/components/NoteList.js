@@ -23,8 +23,9 @@ function NoteList(props) {
         });
     }, []);
     //#endregion
-
+    //reverse the the list of notes
     const shownNotes = [...notes].reverse();
+    
     return (
         <>
             <AddNote addNote={addNote} />

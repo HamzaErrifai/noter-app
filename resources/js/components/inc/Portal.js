@@ -3,6 +3,16 @@ import ReactDOM from "react-dom";
 
 function Portal(props) {
     const [show, setShow] = useState(props.show);
+    $(window).on("navigate", function (event, data) {
+        var direction = data.state.direction;
+        if (direction == "back") {
+            event.preventDefault();
+            props.closePortal();
+        }
+        if (direction == "forward") {
+            // do something else
+        }
+    });
 
     return ReactDOM.createPortal(
         <div className="portal-show" style={{ backgroundColor: props.bgColor }}>
