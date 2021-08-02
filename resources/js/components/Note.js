@@ -73,7 +73,6 @@ function Note(props) {
                                     onChange={(e) => {
                                         e.preventDefault();
                                         setBgColor(e.target.value);
-                                        // setPalette(false);
                                     }}
                                     value={bgColor}
                                 />

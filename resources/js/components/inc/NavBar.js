@@ -6,6 +6,8 @@ import Portal from "./Portal";
 function NavBar(props) {
     const [showPortal, setShowPortal] = useState(false);
     const [what, setWhat] = useState();
+    const [searchVal, setSearchVal] = useState("");
+
     const whatToshow = (val) => {
         setWhat(val);
         setShowPortal(true);
@@ -28,6 +30,17 @@ function NavBar(props) {
             setShowPortal(false);
         }, 100);
     };
+    const handleSearchChange = (e) => {
+        e.preventDefault();
+        setSearchVal(e.target.value);
+        //filter notes
+        const notes = document.querySelectorAll(".note-container");
+        for (let i = 0; i < notes.length; i++) {
+            if (notes[i].textContent.includes(e.target.value)) {
+                notes[i].style.display = "block";
+            } else notes[i].style.display = "none";
+        }
+    };
     return (
         <nav className="navbar navbar-light">
             <div className="bg-blur"></div>
@@ -47,6 +60,8 @@ function NavBar(props) {
             <input
                 className="form-control search-bar shadow-sm ml-auto mr-auto z-index-10"
                 type="search"
+                value={searchVal}
+                onChange={handleSearchChange}
                 placeholder="Search"
                 aria-label="Search"
             />

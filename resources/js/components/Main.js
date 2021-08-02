@@ -1,7 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom";
-import AddNote from "./AddNote";
 import NavBar from "./inc/NavBar";
 import SmallFooter from "./inc/SmallFooter";
 import NoteList from "./NoteList";

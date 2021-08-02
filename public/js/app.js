@@ -2089,17 +2089,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _AddNote__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddNote */ "./resources/js/components/AddNote.js");
-/* harmony import */ var _inc_NavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inc/NavBar */ "./resources/js/components/inc/NavBar.js");
-/* harmony import */ var _inc_SmallFooter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./inc/SmallFooter */ "./resources/js/components/inc/SmallFooter.js");
-/* harmony import */ var _NoteList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NoteList */ "./resources/js/components/NoteList.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _inc_NavBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inc/NavBar */ "./resources/js/components/inc/NavBar.js");
+/* harmony import */ var _inc_SmallFooter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inc/SmallFooter */ "./resources/js/components/inc/SmallFooter.js");
+/* harmony import */ var _NoteList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NoteList */ "./resources/js/components/NoteList.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2110,15 +2105,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Main() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inc_NavBar__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inc_SmallFooter__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inc_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inc_SmallFooter__WEBPACK_IMPORTED_MODULE_3__.default, {})]
   });
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
 if (document.getElementById("main")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Main, {}), document.getElementById("main"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Main, {}), document.getElementById("main"));
 }
 
 /***/ }),
@@ -2275,7 +2270,7 @@ function Note(props) {
             list: "presetColors",
             onChange: function onChange(e) {
               e.preventDefault();
-              setBgColor(e.target.value); // setPalette(false);
+              setBgColor(e.target.value);
             },
             value: bgColor
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("datalist", {
@@ -2359,7 +2354,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function NoteList() {
+function NoteList(props) {
   //#region vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2393,6 +2388,7 @@ function NoteList() {
       addNote: addNote
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",
+      id: "note-list",
       children: [notes.map(function (elm) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
           data: elm
@@ -2503,6 +2499,11 @@ function NavBar(props) {
       what = _useState4[0],
       setWhat = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      searchVal = _useState6[0],
+      setSearchVal = _useState6[1];
+
   var whatToshow = function whatToshow(val) {
     setWhat(val);
     setShowPortal(true);
@@ -2530,6 +2531,19 @@ function NavBar(props) {
     }, 100);
   };
 
+  var handleSearchChange = function handleSearchChange(e) {
+    e.preventDefault();
+    setSearchVal(e.target.value); //filter notes
+
+    var notes = document.querySelectorAll(".note-container");
+
+    for (var i = 0; i < notes.length; i++) {
+      if (notes[i].textContent.includes(e.target.value)) {
+        notes[i].style.display = "block";
+      } else notes[i].style.display = "none";
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
     className: "navbar navbar-light",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -2549,6 +2563,8 @@ function NavBar(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       className: "form-control search-bar shadow-sm ml-auto mr-auto z-index-10",
       type: "search",
+      value: searchVal,
+      onChange: handleSearchChange,
       placeholder: "Search",
       "aria-label": "Search"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {

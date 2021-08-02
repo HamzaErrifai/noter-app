@@ -3,7 +3,7 @@ import AddNote from "./AddNote";
 import Note from "./Note";
 import NoWhat from "./utils/NoWhat.js";
 
-function NoteList() {
+function NoteList(props) {
     //#region vars
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
@@ -27,7 +27,7 @@ function NoteList() {
     return (
         <>
             <AddNote addNote={addNote} />
-            <div className="container mt-1 d-flex justify-content-center flex-column note-list">
+            <div className="container mt-1 d-flex justify-content-center flex-column note-list" id="note-list">
                 {notes.map((elm) => {
                     return <Note data={elm} key={elm.id} />;
                 })}
