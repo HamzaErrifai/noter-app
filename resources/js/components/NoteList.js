@@ -14,7 +14,7 @@ function NoteList(props) {
     const { isArchive = false } = props;
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
-    let refreshBtn = setInterval(() => {
+    const refreshBtn = setInterval(() => {
         document.getElementById("rfrshBtn").classList.add("btn-refresh-show");
     }, 10000);
     //#endregion
