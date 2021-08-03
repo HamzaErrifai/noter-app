@@ -25,7 +25,8 @@ function Note(props) {
                 pinned: convertBoolToNumber(isPinned),
                 color: bgColor,
             };
-            if (isPinned) props.refreshNoteList(data.id);
+            if (isPinned) props.refreshPinnedNoteList(data.id);
+            if (isArchieved) props.refreshArchivedNoteList(data.id);
             //push to DB
             axios.post(`/api/updatenote/${data.id}`, note);
         }

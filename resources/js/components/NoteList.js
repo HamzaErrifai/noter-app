@@ -11,12 +11,20 @@ function NoteList(props) {
     //#endregion
 
     //#region methods
-    const refreshNoteList = (noteId) => {
+    const refreshPinnedNoteList = (noteId) => {
         const copyNotes = [...notes];
         const index = copyNotes.indexOf(
             copyNotes.find((elm) => elm.id == noteId)
         );
         if (index > -1) copyNotes[index].pinned = 1;
+        setNotes(copyNotes);
+    };
+    const refreshArchivedNoteList = (noteId) => {
+        const copyNotes = [...notes];
+        const index = copyNotes.indexOf(
+            copyNotes.find((elm) => elm.id == noteId)
+        );
+        if (index > -1) copyNotes[index].archieved = 1;
         setNotes(copyNotes);
     };
     const prepareNoteList = () => {
@@ -69,7 +77,8 @@ function NoteList(props) {
                             data={elm}
                             key={elm.id}
                             removeNote={removeNote}
-                            refreshNoteList={refreshNoteList}
+                            refreshPinnedNoteList={refreshPinnedNoteList}
+                            refreshArchivedNoteList={refreshArchivedNoteList}
                         />
                     );
                 })}
