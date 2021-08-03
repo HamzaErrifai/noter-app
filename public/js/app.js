@@ -2089,13 +2089,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _inc_NavBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inc/NavBar */ "./resources/js/components/inc/NavBar.js");
-/* harmony import */ var _inc_SmallFooter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inc/SmallFooter */ "./resources/js/components/inc/SmallFooter.js");
-/* harmony import */ var _NoteList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NoteList */ "./resources/js/components/NoteList.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _inc_NavBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inc/NavBar */ "./resources/js/components/inc/NavBar.js");
+/* harmony import */ var _inc_SmallFooter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inc/SmallFooter */ "./resources/js/components/inc/SmallFooter.js");
+/* harmony import */ var _NoteList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NoteList */ "./resources/js/components/NoteList.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2105,15 +2103,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Main() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inc_NavBar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inc_SmallFooter__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inc_NavBar__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inc_SmallFooter__WEBPACK_IMPORTED_MODULE_2__.default, {})]
   });
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
 if (document.getElementById("main")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Main, {}), document.getElementById("main"));
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Main, {}), document.getElementById("main"));
 }
 
 /***/ }),
@@ -2130,15 +2128,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inc_Portal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inc/Portal */ "./resources/js/components/inc/Portal.js");
+/* harmony import */ var _NoteList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NoteList */ "./resources/js/components/NoteList.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
 function More() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "More"
-    })
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showPortal = _useState2[0],
+      setShowPortal = _useState2[1];
+
+  var closePortal = function closePortal() {
+    setTimeout(function () {
+      setShowPortal(false);
+    }, 100);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+      href: "#",
+      className: "btn btn-info btn-block",
+      onClick: function onClick() {
+        setShowPortal(true);
+      },
+      children: "Archive"
+    }), showPortal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_1__.default, {
+      show: true,
+      bgColor: "#343a40",
+      closePortal: closePortal,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+        className: "text-center",
+        children: "Archive"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_2__.default, {
+        isArchive: true
+      })]
+    })]
   });
 }
 
@@ -2418,8 +2459,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function NoteList() {
-  //#region vars
+function NoteList(props) {
+  var _props$isArchive = props.isArchive,
+      isArchive = _props$isArchive === void 0 ? false : _props$isArchive; //#region vars
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       notes = _useState2[0],
@@ -2445,13 +2488,19 @@ function NoteList() {
   var prepareNoteList = function prepareNoteList() {
     var copyNotes = _toConsumableArray(notes);
 
-    var pinnedNotes = copyNotes.filter(function (elm) {
-      return elm.pinned == 1;
+    if (!isArchive) {
+      var pinnedNotes = copyNotes.filter(function (elm) {
+        return elm.pinned == 1 && elm.archieved == 0;
+      }).reverse();
+      var otherNotes = copyNotes.filter(function (elm) {
+        return elm.pinned == 0 && elm.archieved == 0;
+      }).reverse();
+      return pinnedNotes.concat(otherNotes);
+    }
+
+    return copyNotes.filter(function (elm) {
+      return elm.archieved == 1;
     }).reverse();
-    var otherNotes = copyNotes.filter(function (elm) {
-      return elm.pinned != 1;
-    }).reverse();
-    return pinnedNotes.concat(otherNotes);
   };
 
   var addNote = function addNote(note) {
@@ -2481,7 +2530,7 @@ function NoteList() {
 
   var shownNotes = prepareNoteList();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
+    children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
       addNote: addNote
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",

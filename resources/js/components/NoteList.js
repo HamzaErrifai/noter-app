@@ -3,7 +3,8 @@ import AddNote from "./AddNote";
 import Note from "./Note";
 import NoWhat from "./utils/NoWhat.js";
 
-function NoteList() {
+function NoteList(props) {
+    const { isArchive = false } = props;
     //#region vars
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
@@ -20,12 +21,18 @@ function NoteList() {
     };
     const prepareNoteList = () => {
         const copyNotes = [...notes];
-        const pinnedNotes = copyNotes
-            .filter((elm) => elm.pinned == 1)
-            .reverse();
-        const otherNotes = copyNotes.filter((elm) => elm.pinned != 1).reverse();
+        if (!isArchive) {
+            const pinnedNotes = copyNotes
+                .filter((elm) => elm.pinned == 1 && elm.archieved == 0)
+                .reverse();
 
-        return pinnedNotes.concat(otherNotes);
+            const otherNotes = copyNotes
+                .filter((elm) => elm.pinned == 0 && elm.archieved == 0)
+                .reverse();
+
+            return pinnedNotes.concat(otherNotes);
+        }
+        return copyNotes.filter((elm) => elm.archieved == 1).reverse();
     };
     const addNote = (note) => {
         setNotes((prevNotes) => prevNotes.concat(note));
@@ -51,7 +58,7 @@ function NoteList() {
 
     return (
         <>
-            <AddNote addNote={addNote} />
+            {!isArchive && <AddNote addNote={addNote} />}
             <div
                 className="container mt-1 d-flex justify-content-center flex-column note-list"
                 id="note-list"

@@ -83,6 +83,13 @@ body {
     background-color: rgba(54, 54, 54, 0.315);
 } */
 
+.more-a {
+    color: white;
+    font-size: 2em;
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+
 .small-footer {
     height: 50px;
     width: 100%;
@@ -184,6 +191,6 @@ body {
 }
 
 .gold-active {
-    color: black!important;
-    background-color: rgba(255, 255, 255,0.652);
+    color: black !important;
+    background-color: rgba(255, 255, 255, 0.652);
 }
