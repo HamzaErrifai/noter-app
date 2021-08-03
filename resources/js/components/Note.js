@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
 
+const convertBoolToNumber = (boolVal) => {
+    return boolVal ? 1 : 0;
+};
+
 function Note(props) {
     const { data, removeNote } = props;
     const [showPortal, setShowPortal] = useState(false);
@@ -9,14 +13,16 @@ function Note(props) {
     const [title, setTitle] = useState(data.title);
     const [content, setContent] = useState(data.content);
     const [bgColor, setBgColor] = useState(data.color);
+    const [isPinned, setIsPinned] = useState(data.pinned);
+    const [isArchieved, setIsArchieved] = useState(data.archieved);
 
     const closePortal = () => {
         if (title != "" || content != "") {
             let note = {
                 title: title,
                 content: content,
-                archieved: 0,
-                pinned: 0,
+                archieved: convertBoolToNumber(isArchieved),
+                pinned: convertBoolToNumber(isPinned),
                 color: bgColor,
             };
             //push to DB
@@ -99,10 +105,22 @@ function Note(props) {
                                 </datalist>
                             </>
                         </div>
-                        <a href="#">
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setIsArchieved(!isArchieved);
+                            }}
+                            className={isArchieved ? "gold-active" : null}
+                        >
                             <i className="fa fa-archive"></i>
                         </a>
-                        <a href="#">
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setIsPinned(!isPinned);
+                            }}
+                            className={isPinned ? "gold-active" : null}
+                        >
                             <i className="fas fa-thumbtack"></i>
                         </a>
                         <div className="btn-group dropup">

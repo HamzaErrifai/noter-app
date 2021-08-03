@@ -80,9 +80,9 @@ body {
     padding: 10px 10px;
     border-radius: 50%;
 }
-.note-utils a:hover {
+/* .note-utils a:hover {
     background-color: rgba(54, 54, 54, 0.315);
-}
+} */
 
 .small-footer {
     height: 50px;
@@ -179,7 +179,12 @@ body {
     color: #e3342f;
 }
 
-.dropdown-transparent{
+.dropdown-transparent {
     background-color: transparent;
     border: 0;
+}
+
+.gold-active {
+    color: black!important;
+    background-color: rgba(255, 255, 255,0.652);
 }
