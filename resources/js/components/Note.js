@@ -5,7 +5,6 @@ import Portal from "./inc/Portal";
 function Note(props) {
     const { data, removeNote } = props;
     const [showPortal, setShowPortal] = useState(false);
-    const [showPalette, setPalette] = useState(false);
 
     const [title, setTitle] = useState(data.title);
     const [content, setContent] = useState(data.content);
@@ -67,15 +66,16 @@ function Note(props) {
                         }}
                     ></textarea>
                     <div className="note-utils d-flex justify-content-between">
-                        <a
-                            href="#"
-                            onClick={() => {
-                                setPalette(!showPalette);
-                            }}
+                        <button
+                            type="button"
+                            data-toggle="dropdown"
+                            className="btn text-white"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
                             <i className="fas fa-palette"></i>
-                        </a>
-                        {showPalette && (
+                        </button>
+                        <div className="dropdown-menu dropdown-transparent">
                             <>
                                 <input
                                     type="color"
@@ -98,22 +98,18 @@ function Note(props) {
                                     <option>#008b8b</option>
                                 </datalist>
                             </>
-                        )}
-
+                        </div>
                         <a href="#">
                             <i className="fa fa-archive"></i>
                         </a>
                         <a href="#">
                             <i className="fas fa-thumbtack"></i>
                         </a>
-                        {/* <a href="#">
-                            <i className="fas fa-ellipsis-v ml-auto"></i>
-                        </a> */}
                         <div className="btn-group dropup">
                             <button
                                 type="button"
-                                className="btn btn-secondary dropdown-toggle"
                                 data-toggle="dropdown"
+                                className="btn text-white"
                                 aria-haspopup="true"
                                 aria-expanded="false"
                             >

@@ -5,7 +5,6 @@ import Portal from "./inc/Portal";
 function AddNote(props) {
     const { addNote } = props;
     const [showPortal, setShowPortal] = useState(false);
-    const [showPalette, setPalette] = useState(false);
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -69,15 +68,16 @@ function AddNote(props) {
                         placeholder="Content"
                     ></textarea>
                     <div className="note-utils d-flex justify-content-between">
-                        <a
-                            href="#"
-                            onClick={() => {
-                                setPalette(!showPalette);
-                            }}
+                        <button
+                            type="button"
+                            data-toggle="dropdown"
+                            className="btn text-white"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                         >
                             <i className="fas fa-palette"></i>
-                        </a>
-                        {showPalette && (
+                        </button>
+                        <div className="dropdown-menu dropdown-transparent">
                             <>
                                 <input
                                     type="color"
@@ -85,7 +85,6 @@ function AddNote(props) {
                                     onChange={(e) => {
                                         e.preventDefault();
                                         setBgColor(e.target.value);
-                                        // setPalette(false);
                                     }}
                                     value={bgColor}
                                 />
@@ -97,10 +96,11 @@ function AddNote(props) {
                                     <option>#cca529</option>
                                     <option>#b45c18</option>
                                     <option>#341b4d</option>
+                                    <option>#1f385c</option>
                                     <option>#008b8b</option>
                                 </datalist>
                             </>
-                        )}
+                        </div>
 
                         <a href="#">
                             <i className="fa fa-archive"></i>
