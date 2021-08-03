@@ -14,6 +14,9 @@ function NoteList(props) {
     const { isArchive = false } = props;
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
+    let refreshBtn = setInterval(() => {
+        document.getElementById("rfrshBtn").classList.add("btn-refresh-show");
+    }, 10000);
     //#endregion
 
     //#region use effect
@@ -105,14 +108,27 @@ function NoteList(props) {
 
     return (
         <>
-            {!isArchive && <AddNote addNote={addNote} />}
+            {!isArchive && (
+                <>
+                    <AddNote addNote={addNote} />
+                    <button
+                        className="btn btn-info text-white btn-refresh"
+                        id="rfrshBtn"
+                        onClick={() => {
+                            document
+                                .getElementById("rfrshBtn")
+                                .classList.remove("btn-refresh-show");
+                            fetchDataFromApi();
+                        }}
+                    >
+                        <i className="fas fa-sync-alt"></i>
+                    </button>
+                </>
+            )}
             <div
                 className="container mt-1 d-flex justify-content-center flex-column note-list"
                 id="note-list"
             >
-                <button className="btn btn-block btn-info animate__animated animate__fadeInUpBig">
-                    Refresh
-                </button>
                 {shownNotes.map((elm) => {
                     return (
                         <Note

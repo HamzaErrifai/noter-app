@@ -2520,9 +2520,12 @@ function NoteList(props) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       noNotes = _useState4[0],
-      setNoNotes = _useState4[1]; //#endregion
-  //#region use effect
+      setNoNotes = _useState4[1];
 
+  var refreshBtn = setInterval(function () {
+    document.getElementById("rfrshBtn").classList.add("btn-refresh-show");
+  }, 10000); //#endregion
+  //#region use effect
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchDataFromApi();
@@ -2629,15 +2632,24 @@ function NoteList(props) {
 
   var shownNotes = prepareNoteList();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
-      addNote: addNote
+    children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
+        addNote: addNote
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        className: "btn btn-info text-white btn-refresh",
+        id: "rfrshBtn",
+        onClick: function onClick() {
+          document.getElementById("rfrshBtn").classList.remove("btn-refresh-show");
+          fetchDataFromApi();
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+          className: "fas fa-sync-alt"
+        })
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",
       id: "note-list",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "btn btn-block btn-info animate__animated animate__fadeInUpBig",
-        children: "Refresh"
-      }), shownNotes.map(function (elm) {
+      children: [shownNotes.map(function (elm) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
           data: elm,
           removeNote: removeNote,

@@ -51,7 +51,7 @@ body {
     bottom: 20px;
     right: 20px;
     text-align: center;
-    background-color: #38c171ce;
+    background-color: tomato;
     font-size: 1.1em;
     color: white;
     width: 50px;
@@ -60,7 +60,7 @@ body {
     transition-duration: 400ms;
 }
 .add-container:hover {
-    background-color: #38c171;
+    background-color: rgb(252, 38, 0);
 }
 
 .note-container {
@@ -79,9 +79,6 @@ body {
     padding: 10px 10px;
     border-radius: 50%;
 }
-/* .note-utils a:hover {
-    background-color: rgba(54, 54, 54, 0.315);
-} */
 
 .more-a {
     color: white;
@@ -193,4 +190,25 @@ body {
 .gold-active {
     color: black !important;
     background-color: rgba(255, 255, 255, 0.652);
+}
+.btn-refresh{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    bottom: 20px;
+    left: 20px;
+    text-align: center;
+    background-color: rgba(0, 139, 139, 0.835);
+    font-size: 1.1em;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition-duration: 400ms;
+}
+.btn-refresh-show{
+    visibility: visible;
 }
