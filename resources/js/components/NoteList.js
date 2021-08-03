@@ -10,6 +10,14 @@ function NoteList() {
     //#endregion
 
     //#region methods
+    const refreshNoteList = (noteId) => {
+        const copyNotes = [...notes];
+        const index = copyNotes.indexOf(
+            copyNotes.find((elm) => elm.id == noteId)
+        );
+        if (index > -1) copyNotes[index].pinned = 1;
+        setNotes(copyNotes);
+    };
     const prepareNoteList = () => {
         const copyNotes = [...notes];
         const pinnedNotes = copyNotes
@@ -23,13 +31,9 @@ function NoteList() {
         setNotes((prevNotes) => prevNotes.concat(note));
     };
     const removeNote = (id) => {
-        //make a copy of notes
         const copyNotes = [...notes];
-        //find index of the element
         const index = copyNotes.indexOf(copyNotes.find((elm) => elm.id == id));
-        //remove the element from the copy
         if (index > -1) copyNotes.splice(index);
-        //set notes by the new data
         setNotes(copyNotes);
     };
     //#endregion
@@ -54,7 +58,12 @@ function NoteList() {
             >
                 {shownNotes.map((elm) => {
                     return (
-                        <Note data={elm} key={elm.id} removeNote={removeNote} />
+                        <Note
+                            data={elm}
+                            key={elm.id}
+                            removeNote={removeNote}
+                            refreshNoteList={refreshNoteList}
+                        />
                     );
                 })}
                 {noNotes && <NoWhat what="notes" />}

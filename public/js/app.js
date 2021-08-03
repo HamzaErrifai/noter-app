@@ -2227,7 +2227,8 @@ function Note(props) {
         archieved: convertBoolToNumber(isArchieved),
         pinned: convertBoolToNumber(isPinned),
         color: bgColor
-      }; //push to DB
+      };
+      if (isPinned) props.refreshNoteList(data.id); //push to DB
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/updatenote/".concat(data.id), note);
     } //close portal
@@ -2431,6 +2432,16 @@ function NoteList() {
   //#region methods
 
 
+  var refreshNoteList = function refreshNoteList(noteId) {
+    var copyNotes = _toConsumableArray(notes);
+
+    var index = copyNotes.indexOf(copyNotes.find(function (elm) {
+      return elm.id == noteId;
+    }));
+    if (index > -1) copyNotes[index].pinned = 1;
+    setNotes(copyNotes);
+  };
+
   var prepareNoteList = function prepareNoteList() {
     var copyNotes = _toConsumableArray(notes);
 
@@ -2450,16 +2461,12 @@ function NoteList() {
   };
 
   var removeNote = function removeNote(id) {
-    //make a copy of notes
-    var copyNotes = _toConsumableArray(notes); //find index of the element
-
+    var copyNotes = _toConsumableArray(notes);
 
     var index = copyNotes.indexOf(copyNotes.find(function (elm) {
       return elm.id == id;
-    })); //remove the element from the copy
-
-    if (index > -1) copyNotes.splice(index); //set notes by the new data
-
+    }));
+    if (index > -1) copyNotes.splice(index);
     setNotes(copyNotes);
   }; //#endregion
   //#region use effect
@@ -2482,7 +2489,8 @@ function NoteList() {
       children: [shownNotes.map(function (elm) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
           data: elm,
-          removeNote: removeNote
+          removeNote: removeNote,
+          refreshNoteList: refreshNoteList
         }, elm.id);
       }), noNotes && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_NoWhat_js__WEBPACK_IMPORTED_MODULE_3__.default, {
         what: "notes"
