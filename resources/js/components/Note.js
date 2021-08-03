@@ -50,6 +50,11 @@ function Note(props) {
                 setShowPortal(true);
             }}
         >
+            {isPinned == 1 && (
+                <div className="d-flex justify-content-end">
+                    <i className="fas fa-thumbtack"></i>
+                </div>
+            )}
             <h3>{title}</h3>
             <p>{content}</p>
             {showPortal ? (

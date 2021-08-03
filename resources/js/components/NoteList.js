@@ -7,6 +7,7 @@ function NoteList(props) {
     //#region vars
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
+    const [isPinned, setIsPinned] = useState(false);
     //#endregion
 
     //#region methods
@@ -33,9 +34,13 @@ function NoteList(props) {
         });
     }, []);
     //#endregion
-    
+
     //reverse the the list of notes
-    const shownNotes = [...notes].reverse();
+    const copyNotes = [...notes];
+    const pinnedNotes = copyNotes.filter((elm) => elm.pinned == 1).reverse();
+    const otherNotes = copyNotes.filter((elm) => elm.pinned != 1).reverse();
+
+    const shownNotes = pinnedNotes.concat(otherNotes);
 
     return (
         <>

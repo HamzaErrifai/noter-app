@@ -2253,7 +2253,12 @@ function Note(props) {
     onClick: function onClick() {
       setShowPortal(true);
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+    children: [isPinned == 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "d-flex justify-content-end",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+        className: "fas fa-thumbtack"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
       children: title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: content
@@ -2422,7 +2427,12 @@ function NoteList(props) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       noNotes = _useState4[0],
-      setNoNotes = _useState4[1]; //#endregion
+      setNoNotes = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isPinned = _useState6[0],
+      setIsPinned = _useState6[1]; //#endregion
   //#region methods
 
 
@@ -2456,8 +2466,15 @@ function NoteList(props) {
   }, []); //#endregion
   //reverse the the list of notes
 
-  var shownNotes = _toConsumableArray(notes).reverse();
+  var copyNotes = _toConsumableArray(notes);
 
+  var pinnedNotes = copyNotes.filter(function (elm) {
+    return elm.pinned == 1;
+  }).reverse();
+  var otherNotes = copyNotes.filter(function (elm) {
+    return elm.pinned != 1;
+  }).reverse();
+  var shownNotes = pinnedNotes.concat(otherNotes);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
       addNote: addNote
