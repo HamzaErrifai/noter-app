@@ -12,18 +12,26 @@ const capitalize = (str) => {
  * @returns {JSX}
  */
 function Portal(props) {
-    //#region Vars
-    const [show, setShow] = useState(props.show);
-    //#endregion
-
     return ReactDOM.createPortal(
-        <div className="portal-show" style={{ backgroundColor: props.bgColor }}>
+        <div
+            id="portal"
+            className="portal-show animate__animated animate__fadeInUpBig animate__fast"
+            style={{ backgroundColor: props.bgColor }}
+        >
             <h2 className="top-portal-panel shadow-sm">
                 <a
                     href="#"
                     className="text-white ml-3"
                     onClick={() => {
-                        props.closePortal();
+                        const portal = document.getElementById("portal");
+                        portal.classList.replace(
+                            "animate__fadeInUpBig",
+                            "animate__fadeOutDownBig"
+                        );
+                        setTimeout(() => {
+                            props.closePortal();
+                            
+                        }, 800);
                     }}
                 >
                     <i className="fas fa-arrow-left"></i>

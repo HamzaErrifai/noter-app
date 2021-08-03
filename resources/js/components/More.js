@@ -14,7 +14,7 @@ function More() {
     const closePortal = () => {
         setTimeout(() => {
             setShowPortal(false);
-        }, 100);
+        }, 1000);
     };
     //#endregion
 
@@ -31,9 +31,8 @@ function More() {
             </a>
             {showPortal && (
                 <Portal
-                    show={true}
                     bgColor={"#343a40"}
-                    title={'Archive'}
+                    title={"Archive"}
                     closePortal={closePortal}
                 >
                     <NoteList isArchive={true} />

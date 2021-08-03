@@ -16,7 +16,22 @@ function NoteList(props) {
     const [noNotes, setNoNotes] = useState(true);
     //#endregion
 
+    //#region use effect
+    useEffect(() => {
+        fetchDataFromApi();
+    }, []);
+    //#endregion
+
     //#region methods
+    /**
+     * gets data from api and sets "Notes" state
+     */
+    const fetchDataFromApi = () => {
+        axios.get("/api/notes").then((resp) => {
+            setNotes(resp.data);
+            if (resp.data.length > 0) setNoNotes(false);
+        });
+    };
     /**
      *  updates the value of pinned
      *
@@ -86,15 +101,6 @@ function NoteList(props) {
     };
     //#endregion
 
-    //#region use effect
-    useEffect(() => {
-        axios.get("/api/notes").then((resp) => {
-            setNotes(resp.data);
-            if (resp.data.length > 0) setNoNotes(false);
-        });
-    }, []);
-    //#endregion
-
     const shownNotes = prepareNoteList();
 
     return (
@@ -104,6 +110,9 @@ function NoteList(props) {
                 className="container mt-1 d-flex justify-content-center flex-column note-list"
                 id="note-list"
             >
+                <button className="btn btn-block btn-info animate__animated animate__fadeInUpBig">
+                    Refresh
+                </button>
                 {shownNotes.map((elm) => {
                     return (
                         <Note

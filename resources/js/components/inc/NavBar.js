@@ -13,11 +13,21 @@ function NavBar() {
     const [searchVal, setSearchVal] = useState("");
     //#endregion
 
+    //#region methods
+    /**
+     * sets the state "what" then opens the portal
+     * @param {String} val 
+     */
     const whatToshow = (val) => {
         setWhat(val);
         setShowPortal(true);
     };
-
+    /**
+     * Renders an element depending on "what" state
+     * Default null
+     * 
+     * @returns {JSX}
+     */
     const getWhat = () => {
         switch (what) {
             case "profile":
@@ -31,11 +41,19 @@ function NavBar() {
                 break;
         }
     };
+    /**
+     * closes the portal
+     */
     const closePortal = () => {
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
     };
+    /**
+     * sets the 'searchVal' state
+     * then filters the list of Notes
+     * @param {Event} e 
+     */
     const handleSearchChange = (e) => {
         e.preventDefault();
         setSearchVal(e.target.value);
@@ -51,6 +69,7 @@ function NavBar() {
             } else notes[i].style.display = "none";
         }
     };
+    //#endregion
     return (
         <nav className="navbar navbar-light">
             <div className="bg-blur"></div>

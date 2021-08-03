@@ -59,7 +59,7 @@ function Note(props) {
 
     return (
         <div
-            className="col note-container"
+            className="col note-container animate__animated animate__fadeInUpBig"
             style={{ backgroundColor: bgColor }}
             onClick={() => {
                 setShowPortal(true);
@@ -74,7 +74,6 @@ function Note(props) {
             <p>{content}</p>
             {showPortal ? (
                 <Portal
-                    show={true}
                     bgColor={bgColor}
                     closePortal={closePortal}
                     title={"Note"}
