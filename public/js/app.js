@@ -2417,7 +2417,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function NoteList(props) {
+function NoteList() {
   //#region vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2427,14 +2427,21 @@ function NoteList(props) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       noNotes = _useState4[0],
-      setNoNotes = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      isPinned = _useState6[0],
-      setIsPinned = _useState6[1]; //#endregion
+      setNoNotes = _useState4[1]; //#endregion
   //#region methods
 
+
+  var prepareNoteList = function prepareNoteList() {
+    var copyNotes = _toConsumableArray(notes);
+
+    var pinnedNotes = copyNotes.filter(function (elm) {
+      return elm.pinned == 1;
+    }).reverse();
+    var otherNotes = copyNotes.filter(function (elm) {
+      return elm.pinned != 1;
+    }).reverse();
+    return pinnedNotes.concat(otherNotes);
+  };
 
   var addNote = function addNote(note) {
     setNotes(function (prevNotes) {
@@ -2464,17 +2471,8 @@ function NoteList(props) {
       if (resp.data.length > 0) setNoNotes(false);
     });
   }, []); //#endregion
-  //reverse the the list of notes
 
-  var copyNotes = _toConsumableArray(notes);
-
-  var pinnedNotes = copyNotes.filter(function (elm) {
-    return elm.pinned == 1;
-  }).reverse();
-  var otherNotes = copyNotes.filter(function (elm) {
-    return elm.pinned != 1;
-  }).reverse();
-  var shownNotes = pinnedNotes.concat(otherNotes);
+  var shownNotes = prepareNoteList();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
       addNote: addNote

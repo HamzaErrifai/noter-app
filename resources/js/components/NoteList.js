@@ -3,14 +3,22 @@ import AddNote from "./AddNote";
 import Note from "./Note";
 import NoWhat from "./utils/NoWhat.js";
 
-function NoteList(props) {
+function NoteList() {
     //#region vars
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
-    const [isPinned, setIsPinned] = useState(false);
     //#endregion
 
     //#region methods
+    const prepareNoteList = () => {
+        const copyNotes = [...notes];
+        const pinnedNotes = copyNotes
+            .filter((elm) => elm.pinned == 1)
+            .reverse();
+        const otherNotes = copyNotes.filter((elm) => elm.pinned != 1).reverse();
+
+        return pinnedNotes.concat(otherNotes);
+    };
     const addNote = (note) => {
         setNotes((prevNotes) => prevNotes.concat(note));
     };
@@ -35,12 +43,7 @@ function NoteList(props) {
     }, []);
     //#endregion
 
-    //reverse the the list of notes
-    const copyNotes = [...notes];
-    const pinnedNotes = copyNotes.filter((elm) => elm.pinned == 1).reverse();
-    const otherNotes = copyNotes.filter((elm) => elm.pinned != 1).reverse();
-
-    const shownNotes = pinnedNotes.concat(otherNotes);
+    const shownNotes = prepareNoteList();
 
     return (
         <>
