@@ -2918,8 +2918,9 @@ function Portal(props) {
           var portal = document.getElementById("portal");
           portal.classList.replace("animate__fadeInUpBig", "animate__fadeOutDownBig");
           setTimeout(function () {
+            portal.classList.replace("animate__fadeOutDownBig", "animate__fadeInUpBig");
             props.closePortal();
-          }, 800);
+          }, 100);
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
           className: "fas fa-arrow-left"

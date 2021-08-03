@@ -29,9 +29,12 @@ function Portal(props) {
                             "animate__fadeOutDownBig"
                         );
                         setTimeout(() => {
+                            portal.classList.replace(
+                                "animate__fadeOutDownBig",
+                                "animate__fadeInUpBig"
+                            );
                             props.closePortal();
-                            
-                        }, 800);
+                        }, 100);
                     }}
                 >
                     <i className="fas fa-arrow-left"></i>
