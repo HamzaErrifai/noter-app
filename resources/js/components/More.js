@@ -3,12 +3,21 @@ import Portal from "./inc/Portal";
 import NoteList from "./NoteList";
 
 function More() {
+    //#region vars
     const [showPortal, setShowPortal] = useState(false);
+    //#endregion
+
+    //#region methods
+    /**
+     * Closes the portal
+     */
     const closePortal = () => {
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
     };
+    //#endregion
+    
     return (
         <div>
             <a

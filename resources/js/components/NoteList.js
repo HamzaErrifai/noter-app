@@ -3,30 +3,53 @@ import AddNote from "./AddNote";
 import Note from "./Note";
 import NoWhat from "./utils/NoWhat.js";
 
+/**
+ *  generates a list of notes
+ *
+ * @param {props} isArchive : boolean
+ * @return {JSX}
+ */
 function NoteList(props) {
-    const { isArchive = false } = props;
     //#region vars
+    const { isArchive = false } = props;
     const [notes, setNotes] = useState([]);
     const [noNotes, setNoNotes] = useState(true);
     //#endregion
 
     //#region methods
-    const refreshPinnedNoteList = (noteId) => {
+    /**
+     *  updates the value of pinned
+     *
+     * @param {Integer} noteId
+     * @param {boolean} isPinned
+     */
+    const refreshPinnedNoteList = (noteId, isPinned) => {
         const copyNotes = [...notes];
         const index = copyNotes.indexOf(
             copyNotes.find((elm) => elm.id == noteId)
         );
-        if (index > -1) copyNotes[index].pinned = 1;
+        if (index > -1) copyNotes[index].pinned = isPinned ? 1 : 0;
         setNotes(copyNotes);
     };
-    const refreshArchivedNoteList = (noteId) => {
+    /**
+     *  updates the value of archieved
+     *
+     * @param {Integer} noteId
+     * @param {boolean} archieved
+     */
+    const refreshArchivedNoteList = (noteId, isArchieved) => {
         const copyNotes = [...notes];
         const index = copyNotes.indexOf(
             copyNotes.find((elm) => elm.id == noteId)
         );
-        if (index > -1) copyNotes[index].archieved = 1;
+        if (index > -1) copyNotes[index].archieved = isArchieved ? 1 : 0;
         setNotes(copyNotes);
     };
+    /**
+     *  Prepares the list of notes before rendering it
+     *
+     * @returns {Array}
+     */
     const prepareNoteList = () => {
         const copyNotes = [...notes];
         if (!isArchive) {
@@ -42,9 +65,19 @@ function NoteList(props) {
         }
         return copyNotes.filter((elm) => elm.archieved == 1).reverse();
     };
+    /**
+     * Adds an note to the list
+     *
+     * @param {Object} note
+     */
     const addNote = (note) => {
         setNotes((prevNotes) => prevNotes.concat(note));
     };
+    /**
+     * Removes a note by its id from the list
+     *
+     * @param {Integer} id
+     */
     const removeNote = (id) => {
         const copyNotes = [...notes];
         const index = copyNotes.indexOf(copyNotes.find((elm) => elm.id == id));

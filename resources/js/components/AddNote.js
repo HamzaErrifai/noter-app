@@ -1,15 +1,26 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
-
+/**
+ * renders AddNote Element
+ * 
+ * @param {*} props 
+ * @returns {JSX}
+ */
 function AddNote(props) {
+    //#region vars
     const { addNote } = props;
     const [showPortal, setShowPortal] = useState(false);
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [bgColor, setBgColor] = useState("#808080");
+    //#endregion
 
+    //#region methods
+    /**
+     * Closes the portal
+     */
     const closePortal = () => {
         if (title != "" || content != "") {
             let note = {
@@ -33,6 +44,7 @@ function AddNote(props) {
             setShowPortal(false);
         }, 100);
     };
+    //#endregion
 
     return (
         <div

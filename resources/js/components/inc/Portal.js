@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
+/**
+ * Renders what is given to children
+ * @param {*} props 
+ * @returns {JSX}
+ */
 function Portal(props) {
+    //#region Vars
     const [show, setShow] = useState(props.show);
-    $(window).on("navigate", function (event, data) {
-        var direction = data.state.direction;
-        if (direction == "back") {
-            event.preventDefault();
-            props.closePortal();
-        }
-        if (direction == "forward") {
-            // do something else
-        }
-    });
-
+    //#endregion
+    
     return ReactDOM.createPortal(
         <div className="portal-show" style={{ backgroundColor: props.bgColor }}>
             <h2 className="top-portal-panel shadow-sm">

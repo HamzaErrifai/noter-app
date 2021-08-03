@@ -1,12 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
-
+/**
+ *  returns 1 if true or 0 if false
+ * @param {boolean} boolVal
+ * @returns {Integer}
+ */
 const convertBoolToNumber = (boolVal) => {
     return boolVal ? 1 : 0;
 };
 
 function Note(props) {
+    //#region vars
     const { data, removeNote } = props;
     const [showPortal, setShowPortal] = useState(false);
 
@@ -15,7 +20,12 @@ function Note(props) {
     const [bgColor, setBgColor] = useState(data.color);
     const [isPinned, setIsPinned] = useState(data.pinned);
     const [isArchieved, setIsArchieved] = useState(data.archieved);
+    //#endregion
 
+    //#region methods
+    /**
+     * Closes the portal
+     */
     const closePortal = () => {
         if (title != "" || content != "") {
             let note = {
@@ -25,8 +35,8 @@ function Note(props) {
                 pinned: convertBoolToNumber(isPinned),
                 color: bgColor,
             };
-            if (isPinned) props.refreshPinnedNoteList(data.id);
-            if (isArchieved) props.refreshArchivedNoteList(data.id);
+            props.refreshPinnedNoteList(data.id, isPinned);
+            props.refreshArchivedNoteList(data.id, isArchieved);
             //push to DB
             axios.post(`/api/updatenote/${data.id}`, note);
         }
@@ -35,7 +45,9 @@ function Note(props) {
             setShowPortal(false);
         }, 100);
     };
-
+    /**
+     * deletes the current Note from the Data base then from the rendered list
+     */
     const deleteNote = () => {
         if (confirm("Delete this Note?"))
             axios.delete("/api/deletenote/" + data.id).then((resp) => {
@@ -43,6 +55,7 @@ function Note(props) {
                 removeNote(resp.data.id);
             });
     };
+    //#endregion
 
     return (
         <div

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import More from "../More";
 import Profile from "../Profile";
 import Portal from "./Portal";
-
-function NavBar(props) {
+/**
+ * Renders NavBar
+ * @returns {JSX}
+ */
+function NavBar() {
     const [showPortal, setShowPortal] = useState(false);
     const [what, setWhat] = useState();
     const [searchVal, setSearchVal] = useState("");

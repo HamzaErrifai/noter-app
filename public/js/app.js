@@ -1932,11 +1932,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/**
+ * renders AddNote Element
+ * 
+ * @param {*} props 
+ * @returns {JSX}
+ */
+
 
 
 
 
 function AddNote(props) {
+  //#region vars
   var addNote = props.addNote;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
@@ -1957,7 +1965,13 @@ function AddNote(props) {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("#808080"),
       _useState8 = _slicedToArray(_useState7, 2),
       bgColor = _useState8[0],
-      setBgColor = _useState8[1];
+      setBgColor = _useState8[1]; //#endregion
+  //#region methods
+
+  /**
+   * Closes the portal
+   */
+
 
   var closePortal = function closePortal() {
     if (title != "" || content != "") {
@@ -1982,7 +1996,8 @@ function AddNote(props) {
     setTimeout(function () {
       setShowPortal(false);
     }, 100);
-  };
+  }; //#endregion
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "add-container shadow-sm",
@@ -2150,16 +2165,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function More() {
+  //#region vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showPortal = _useState2[0],
-      setShowPortal = _useState2[1];
+      setShowPortal = _useState2[1]; //#endregion
+  //#region methods
+
+  /**
+   * Closes the portal
+   */
+
 
   var closePortal = function closePortal() {
     setTimeout(function () {
       setShowPortal(false);
     }, 100);
-  };
+  }; //#endregion
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
@@ -2218,6 +2241,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/**
+ *  returns 1 if true or 0 if false
+ * @param {boolean} boolVal
+ * @returns {Integer}
+ */
+
 
 
 
@@ -2227,6 +2256,7 @@ var convertBoolToNumber = function convertBoolToNumber(boolVal) {
 };
 
 function Note(props) {
+  //#region vars
   var data = props.data,
       removeNote = props.removeNote;
 
@@ -2258,7 +2288,13 @@ function Note(props) {
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(data.archieved),
       _useState12 = _slicedToArray(_useState11, 2),
       isArchieved = _useState12[0],
-      setIsArchieved = _useState12[1];
+      setIsArchieved = _useState12[1]; //#endregion
+  //#region methods
+
+  /**
+   * Closes the portal
+   */
+
 
   var closePortal = function closePortal() {
     if (title != "" || content != "") {
@@ -2269,8 +2305,8 @@ function Note(props) {
         pinned: convertBoolToNumber(isPinned),
         color: bgColor
       };
-      if (isPinned) props.refreshPinnedNoteList(data.id);
-      if (isArchieved) props.refreshArchivedNoteList(data.id); //push to DB
+      props.refreshPinnedNoteList(data.id, isPinned);
+      props.refreshArchivedNoteList(data.id, isArchieved); //push to DB
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/updatenote/".concat(data.id), note);
     } //close portal
@@ -2280,13 +2316,18 @@ function Note(props) {
       setShowPortal(false);
     }, 100);
   };
+  /**
+   * deletes the current Note from the Data base then from the rendered list
+   */
+
 
   var deleteNote = function deleteNote() {
     if (confirm("Delete this Note?")) axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/deletenote/" + data.id).then(function (resp) {
       setShowPortal(false);
       removeNote(resp.data.id);
     });
-  };
+  }; //#endregion
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "col note-container",
@@ -2456,13 +2497,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/**
+ *  generates a list of notes
+ *
+ * @param {props} isArchive : boolean
+ * @return {JSX}
+ */
+
 
 
 
 
 function NoteList(props) {
+  //#region vars
   var _props$isArchive = props.isArchive,
-      isArchive = _props$isArchive === void 0 ? false : _props$isArchive; //#region vars
+      isArchive = _props$isArchive === void 0 ? false : _props$isArchive;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2475,26 +2524,46 @@ function NoteList(props) {
       setNoNotes = _useState4[1]; //#endregion
   //#region methods
 
+  /**
+   *  updates the value of pinned
+   *
+   * @param {Integer} noteId
+   * @param {boolean} isPinned
+   */
 
-  var refreshPinnedNoteList = function refreshPinnedNoteList(noteId) {
+
+  var refreshPinnedNoteList = function refreshPinnedNoteList(noteId, isPinned) {
     var copyNotes = _toConsumableArray(notes);
 
     var index = copyNotes.indexOf(copyNotes.find(function (elm) {
       return elm.id == noteId;
     }));
-    if (index > -1) copyNotes[index].pinned = 1;
+    if (index > -1) copyNotes[index].pinned = isPinned ? 1 : 0;
     setNotes(copyNotes);
   };
+  /**
+   *  updates the value of archieved
+   *
+   * @param {Integer} noteId
+   * @param {boolean} archieved
+   */
 
-  var refreshArchivedNoteList = function refreshArchivedNoteList(noteId) {
+
+  var refreshArchivedNoteList = function refreshArchivedNoteList(noteId, isArchieved) {
     var copyNotes = _toConsumableArray(notes);
 
     var index = copyNotes.indexOf(copyNotes.find(function (elm) {
       return elm.id == noteId;
     }));
-    if (index > -1) copyNotes[index].archieved = 1;
+    if (index > -1) copyNotes[index].archieved = isArchieved ? 1 : 0;
     setNotes(copyNotes);
   };
+  /**
+   *  Prepares the list of notes before rendering it
+   *
+   * @returns {Array}
+   */
+
 
   var prepareNoteList = function prepareNoteList() {
     var copyNotes = _toConsumableArray(notes);
@@ -2513,12 +2582,24 @@ function NoteList(props) {
       return elm.archieved == 1;
     }).reverse();
   };
+  /**
+   * Adds an note to the list
+   *
+   * @param {Object} note
+   */
+
 
   var addNote = function addNote(note) {
     setNotes(function (prevNotes) {
       return prevNotes.concat(note);
     });
   };
+  /**
+   * Removes a note by its id from the list
+   *
+   * @param {Integer} id
+   */
+
 
   var removeNote = function removeNote(id) {
     var copyNotes = _toConsumableArray(notes);
@@ -2645,10 +2726,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/**
+ * Renders NavBar
+ * @returns {JSX}
+ */
 
 
 
-function NavBar(props) {
+
+function NavBar() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showPortal = _useState2[0],
@@ -2777,26 +2863,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+/**
+ * Renders what is given to children
+ * @param {*} props 
+ * @returns {JSX}
+ */
+
 
 
 
 function Portal(props) {
+  //#region Vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.show),
       _useState2 = _slicedToArray(_useState, 2),
       show = _useState2[0],
-      setShow = _useState2[1];
+      setShow = _useState2[1]; //#endregion
 
-  $(window).on("navigate", function (event, data) {
-    var direction = data.state.direction;
 
-    if (direction == "back") {
-      event.preventDefault();
-      props.closePortal();
-    }
-
-    if (direction == "forward") {// do something else
-    }
-  });
   return /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "portal-show",
     style: {
