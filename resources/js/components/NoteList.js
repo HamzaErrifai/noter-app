@@ -13,6 +13,16 @@ function NoteList(props) {
     const addNote = (note) => {
         setNotes((prevNotes) => prevNotes.concat(note));
     };
+    const removeNote = (id) => {
+        //make a copy of notes
+        const copyNotes = [...notes];
+        //find index of the element
+        const index = copyNotes.indexOf(copyNotes.find((elm) => elm.id == id));
+        //remove the element from the copy
+        if (index > -1) copyNotes.splice(index);
+        //set notes by the new data
+        setNotes(copyNotes);
+    };
     //#endregion
 
     //#region use effect
@@ -23,9 +33,10 @@ function NoteList(props) {
         });
     }, []);
     //#endregion
+    
     //reverse the the list of notes
     const shownNotes = [...notes].reverse();
-    
+
     return (
         <>
             <AddNote addNote={addNote} />
@@ -34,7 +45,9 @@ function NoteList(props) {
                 id="note-list"
             >
                 {shownNotes.map((elm) => {
-                    return <Note data={elm} key={elm.id} />;
+                    return (
+                        <Note data={elm} key={elm.id} removeNote={removeNote} />
+                    );
                 })}
                 {noNotes && <NoWhat what="notes" />}
             </div>

@@ -27,7 +27,7 @@ function AddNote(props) {
             //reset form
             setTitle("");
             setContent("");
-            setBgColor("gray");
+            setBgColor("#808080");
         }
         //close portal
         setTimeout(() => {
@@ -109,7 +109,7 @@ function AddNote(props) {
                             <i className="fas fa-thumbtack"></i>
                         </a>
                         <a href="#">
-                            <i className="fas fa-ellipsis-v ml-auto"></i>
+                            {/* <i className="fas fa-ellipsis-v ml-auto"></i> */}
                         </a>
                     </div>
                 </Portal>

@@ -1980,7 +1980,7 @@ function AddNote(props) {
 
       setTitle("");
       setContent("");
-      setBgColor("gray");
+      setBgColor("#808080");
     } //close portal
 
 
@@ -2066,10 +2066,7 @@ function AddNote(props) {
             className: "fas fa-thumbtack"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: "#",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-            className: "fas fa-ellipsis-v ml-auto"
-          })
+          href: "#"
         })]
       })]
     }) : null]
@@ -2159,9 +2156,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inc_Portal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inc/Portal */ "./resources/js/components/inc/Portal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inc_Portal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inc/Portal */ "./resources/js/components/inc/Portal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2180,30 +2179,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Note(props) {
-  var data = props.data;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+function Note(props) {
+  var data = props.data,
+      removeNote = props.removeNote;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showPortal = _useState2[0],
       setShowPortal = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
       showPalette = _useState4[0],
       setPalette = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.title),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(data.title),
       _useState6 = _slicedToArray(_useState5, 2),
       title = _useState6[0],
       setTitle = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.content),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(data.content),
       _useState8 = _slicedToArray(_useState7, 2),
       content = _useState8[0],
       setContent = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.color),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(data.color),
       _useState10 = _slicedToArray(_useState9, 2),
       bgColor = _useState10[0],
       setBgColor = _useState10[1];
@@ -2216,9 +2217,9 @@ function Note(props) {
         archieved: 0,
         pinned: 0,
         color: bgColor
-      }; //push and pull from DB
+      }; //push to DB
 
-      axios.post("/api/updatenote/".concat(data.id), note);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/updatenote/".concat(data.id), note);
     } //close portal
 
 
@@ -2227,7 +2228,14 @@ function Note(props) {
     }, 100);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  var deleteNote = function deleteNote() {
+    if (confirm("Delete this Note?")) axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/deletenote/" + data.id).then(function (resp) {
+      setShowPortal(false);
+      removeNote(resp.data.id);
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "col note-container",
     style: {
       backgroundColor: bgColor
@@ -2235,15 +2243,15 @@ function Note(props) {
     onClick: function onClick() {
       setShowPortal(true);
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
       children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: content
-    }), showPortal ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_1__.default, {
+    }), showPortal ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_2__.default, {
       show: true,
       bgColor: bgColor,
       closePortal: closePortal,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
         maxLength: "20",
@@ -2251,24 +2259,24 @@ function Note(props) {
           setTitle(e.target.value);
         },
         value: title
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
         className: "txt-area-note",
         value: content,
         onChange: function onChange(e) {
           setContent(e.target.value);
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "note-utils d-flex justify-content-between",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
           onClick: function onClick() {
             setPalette(!showPalette);
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fas fa-palette"
           })
-        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        }), showPalette && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "color",
             list: "presetColors",
             onChange: function onChange(e) {
@@ -2276,43 +2284,58 @@ function Note(props) {
               setBgColor(e.target.value);
             },
             value: bgColor
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("datalist", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("datalist", {
             id: "presetColors",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#808080"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#153465"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#67160e"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#135714"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#cca529"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#b45c18"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#341b4d"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#1f385c"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               children: "#008b8b"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fa fa-archive"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fas fa-thumbtack"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          href: "#",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-            className: "fas fa-ellipsis-v ml-auto"
-          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "btn-group dropup",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: "btn btn-secondary dropdown-toggle",
+            "data-toggle": "dropdown",
+            "aria-haspopup": "true",
+            "aria-expanded": "false",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+              className: "fas fa-ellipsis-v ml-auto"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "dropdown-menu",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+              className: "dropdown-item text-dark",
+              href: "#",
+              onClick: deleteNote,
+              children: "Delete note"
+            })
+          })]
         })]
       })]
     }) : null]
@@ -2385,6 +2408,20 @@ function NoteList(props) {
     setNotes(function (prevNotes) {
       return prevNotes.concat(note);
     });
+  };
+
+  var removeNote = function removeNote(id) {
+    //make a copy of notes
+    var copyNotes = _toConsumableArray(notes); //find index of the element
+
+
+    var index = copyNotes.indexOf(copyNotes.find(function (elm) {
+      return elm.id == id;
+    })); //remove the element from the copy
+
+    if (index > -1) copyNotes.splice(index); //set notes by the new data
+
+    setNotes(copyNotes);
   }; //#endregion
   //#region use effect
 
@@ -2407,7 +2444,8 @@ function NoteList(props) {
       id: "note-list",
       children: [shownNotes.map(function (elm) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Note__WEBPACK_IMPORTED_MODULE_2__.default, {
-          data: elm
+          data: elm,
+          removeNote: removeNote
         }, elm.id);
       }), noNotes && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_utils_NoWhat_js__WEBPACK_IMPORTED_MODULE_3__.default, {
         what: "notes"

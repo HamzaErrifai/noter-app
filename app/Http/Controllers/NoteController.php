@@ -39,4 +39,13 @@ class NoteController extends Controller
 
         return ['etat' => true];
     }
+
+    public function deleteNote($id)
+    {
+        $note = Note::find($id);
+
+        $note->delete();
+
+        return ['etat' => true, 'id' => $id];
+    }
 }

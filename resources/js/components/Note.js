@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
 
 function Note(props) {
-    const { data } = props;
+    const { data, removeNote } = props;
     const [showPortal, setShowPortal] = useState(false);
     const [showPalette, setPalette] = useState(false);
 
@@ -19,13 +20,21 @@ function Note(props) {
                 pinned: 0,
                 color: bgColor,
             };
-            //push and pull from DB
+            //push to DB
             axios.post(`/api/updatenote/${data.id}`, note);
         }
         //close portal
         setTimeout(() => {
             setShowPortal(false);
         }, 100);
+    };
+
+    const deleteNote = () => {
+        if (confirm("Delete this Note?"))
+            axios.delete("/api/deletenote/" + data.id).then((resp) => {
+                setShowPortal(false);
+                removeNote(resp.data.id);
+            });
     };
 
     return (
@@ -97,9 +106,29 @@ function Note(props) {
                         <a href="#">
                             <i className="fas fa-thumbtack"></i>
                         </a>
-                        <a href="#">
+                        {/* <a href="#">
                             <i className="fas fa-ellipsis-v ml-auto"></i>
-                        </a>
+                        </a> */}
+                        <div className="btn-group dropup">
+                            <button
+                                type="button"
+                                className="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                <i className="fas fa-ellipsis-v ml-auto"></i>
+                            </button>
+                            <div className="dropdown-menu">
+                                <a
+                                    className="dropdown-item text-dark"
+                                    href="#"
+                                    onClick={deleteNote}
+                                >
+                                    Delete note
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </Portal>
             ) : null}
