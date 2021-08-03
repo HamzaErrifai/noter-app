@@ -73,7 +73,12 @@ function Note(props) {
             <h3>{title}</h3>
             <p>{content}</p>
             {showPortal ? (
-                <Portal show={true} bgColor={bgColor} closePortal={closePortal}>
+                <Portal
+                    show={true}
+                    bgColor={bgColor}
+                    closePortal={closePortal}
+                    title={"Note"}
+                >
                     <input
                         type="text"
                         className="inp-area-note"

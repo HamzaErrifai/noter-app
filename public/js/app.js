@@ -2192,16 +2192,14 @@ function More() {
         setShowPortal(true);
       },
       children: "Archive"
-    }), showPortal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_1__.default, {
+    }), showPortal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inc_Portal__WEBPACK_IMPORTED_MODULE_1__.default, {
       show: true,
       bgColor: "#343a40",
+      title: 'Archive',
       closePortal: closePortal,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-        className: "text-center",
-        children: "Archive"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NoteList__WEBPACK_IMPORTED_MODULE_2__.default, {
         isArchive: true
-      })]
+      })
     })]
   });
 }
@@ -2350,6 +2348,7 @@ function Note(props) {
       show: true,
       bgColor: bgColor,
       closePortal: closePortal,
+      title: "Note",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
@@ -2735,6 +2734,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function NavBar() {
+  //#region vars
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showPortal = _useState2[0],
@@ -2748,7 +2748,8 @@ function NavBar() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       searchVal = _useState6[0],
-      setSearchVal = _useState6[1];
+      setSearchVal = _useState6[1]; //#endregion
+
 
   var whatToshow = function whatToshow(val) {
     setWhat(val);
@@ -2824,6 +2825,7 @@ function NavBar() {
       })
     }), showPortal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Portal__WEBPACK_IMPORTED_MODULE_3__.default, {
       show: true,
+      title: what,
       bgColor: "#343a40",
       closePortal: closePortal,
       children: getWhat()
@@ -2863,13 +2865,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+var capitalize = function capitalize(str) {
+  if (str !== undefined && str.length > 0) return str.charAt(0).toUpperCase() + str.slice(1);
+  return str;
+};
 /**
  * Renders what is given to children
- * @param {*} props 
+ * @param {*} props
  * @returns {JSX}
  */
-
-
 
 
 function Portal(props) {
@@ -2885,9 +2892,9 @@ function Portal(props) {
     style: {
       backgroundColor: props.bgColor
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h2", {
       className: "top-portal-panel shadow-sm",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
         href: "#",
         className: "text-white ml-3",
         onClick: function onClick() {
@@ -2896,7 +2903,10 @@ function Portal(props) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
           className: "fas fa-arrow-left"
         })
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "text-white ml-auto mr-auto mt-3",
+        children: capitalize(props.title)
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "container mt-4 portal-content",
       children: props.children

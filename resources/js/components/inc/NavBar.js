@@ -7,14 +7,17 @@ import Portal from "./Portal";
  * @returns {JSX}
  */
 function NavBar() {
+    //#region vars
     const [showPortal, setShowPortal] = useState(false);
     const [what, setWhat] = useState();
     const [searchVal, setSearchVal] = useState("");
+    //#endregion
 
     const whatToshow = (val) => {
         setWhat(val);
         setShowPortal(true);
     };
+
     const getWhat = () => {
         switch (what) {
             case "profile":
@@ -83,6 +86,7 @@ function NavBar() {
             {showPortal && (
                 <Portal
                     show={true}
+                    title={what}
                     bgColor={"#343a40"}
                     closePortal={closePortal}
                 >

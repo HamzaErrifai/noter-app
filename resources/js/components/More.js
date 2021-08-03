@@ -17,7 +17,7 @@ function More() {
         }, 100);
     };
     //#endregion
-    
+
     return (
         <div>
             <a
@@ -33,9 +33,9 @@ function More() {
                 <Portal
                     show={true}
                     bgColor={"#343a40"}
+                    title={'Archive'}
                     closePortal={closePortal}
                 >
-                    <h2 className="text-center">Archive</h2>
                     <NoteList isArchive={true} />
                 </Portal>
             )}
