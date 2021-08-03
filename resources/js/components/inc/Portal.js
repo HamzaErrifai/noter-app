@@ -12,6 +12,9 @@ const capitalize = (str) => {
  * @returns {JSX}
  */
 function Portal(props) {
+    const meta = document.getElementById("theme-color");
+    meta.setAttribute("content", props.bgColor);
+
     return ReactDOM.createPortal(
         <div
             id="portal"

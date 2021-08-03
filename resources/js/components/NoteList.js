@@ -21,7 +21,11 @@ function NoteList(props) {
 
     //#region use effect
     useEffect(() => {
-        fetchDataFromApi();
+        let isMounted = true;
+        if (isMounted) fetchDataFromApi();
+        return () => {
+            isMounted = false;
+        };
     }, []);
     //#endregion
 

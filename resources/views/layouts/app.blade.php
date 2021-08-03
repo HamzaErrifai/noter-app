@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="theme-color" content="tomato" id="theme-color" />
     <title>Noter-App</title>
 
     <!-- Scripts -->

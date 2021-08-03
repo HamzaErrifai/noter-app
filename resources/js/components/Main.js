@@ -4,8 +4,8 @@ import SmallFooter from "./inc/SmallFooter";
 import NoteList from "./NoteList";
 import "animate.css";
 
-
 function Main() {
+    
     return (
         <>
             <NavBar />

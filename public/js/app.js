@@ -1933,14 +1933,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 /**
- * renders AddNote Element
- * 
- * @param {*} props 
- * @returns {JSX}
+ *  returns 1 if true or 0 if false
+ * @param {boolean} boolVal
+ * @returns {Integer}
  */
 
 
 
+
+
+var convertBoolToNumber = function convertBoolToNumber(boolVal) {
+  return boolVal ? 1 : 0;
+};
+/**
+ * renders AddNote Element
+ *
+ * @param {*} props
+ * @returns {JSX}
+ */
 
 
 function AddNote(props) {
@@ -1965,7 +1975,17 @@ function AddNote(props) {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("#808080"),
       _useState8 = _slicedToArray(_useState7, 2),
       bgColor = _useState8[0],
-      setBgColor = _useState8[1]; //#endregion
+      setBgColor = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isPinned = _useState10[0],
+      setIsPinned = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      isArchieved = _useState12[0],
+      setIsArchieved = _useState12[1]; //#endregion
   //#region methods
 
   /**
@@ -1978,8 +1998,8 @@ function AddNote(props) {
       var note = {
         title: title,
         content: content,
-        archieved: 0,
-        pinned: 0,
+        archieved: convertBoolToNumber(isArchieved),
+        pinned: convertBoolToNumber(isPinned),
         color: bgColor
       }; //push and pull from DB
 
@@ -2073,11 +2093,19 @@ function AddNote(props) {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
+          onClick: function onClick() {
+            setIsArchieved(!isArchieved);
+          },
+          className: isArchieved ? "gold-active" : null,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fa fa-archive"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: "#",
+          onClick: function onClick() {
+            setIsPinned(!isPinned);
+          },
+          className: isPinned ? "gold-active" : null,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
             className: "fas fa-thumbtack"
           })
@@ -2528,7 +2556,11 @@ function NoteList(props) {
   //#region use effect
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDataFromApi();
+    var isMounted = true;
+    if (isMounted) fetchDataFromApi();
+    return function () {
+      isMounted = false;
+    };
   }, []); //#endregion
   //#region methods
 
@@ -2915,6 +2947,8 @@ var capitalize = function capitalize(str) {
 
 
 function Portal(props) {
+  var meta = document.getElementById("theme-color");
+  meta.setAttribute("content", props.bgColor);
   return /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     id: "portal",
     className: "portal-show animate__animated animate__fadeInUpBig animate__fast",

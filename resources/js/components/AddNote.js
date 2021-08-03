@@ -1,10 +1,20 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Portal from "./inc/Portal";
+
+/**
+ *  returns 1 if true or 0 if false
+ * @param {boolean} boolVal
+ * @returns {Integer}
+ */
+const convertBoolToNumber = (boolVal) => {
+    return boolVal ? 1 : 0;
+};
+
 /**
  * renders AddNote Element
- * 
- * @param {*} props 
+ *
+ * @param {*} props
  * @returns {JSX}
  */
 function AddNote(props) {
@@ -15,6 +25,8 @@ function AddNote(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [bgColor, setBgColor] = useState("#808080");
+    const [isPinned, setIsPinned] = useState(false);
+    const [isArchieved, setIsArchieved] = useState(false);
     //#endregion
 
     //#region methods
@@ -26,8 +38,8 @@ function AddNote(props) {
             let note = {
                 title: title,
                 content: content,
-                archieved: 0,
-                pinned: 0,
+                archieved: convertBoolToNumber(isArchieved),
+                pinned: convertBoolToNumber(isPinned),
                 color: bgColor,
             };
 
@@ -114,10 +126,22 @@ function AddNote(props) {
                             </>
                         </div>
 
-                        <a href="#">
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setIsArchieved(!isArchieved);
+                            }}
+                            className={isArchieved ? "gold-active" : null}
+                        >
                             <i className="fa fa-archive"></i>
                         </a>
-                        <a href="#">
+                        <a
+                            href="#"
+                            onClick={() => {
+                                setIsPinned(!isPinned);
+                            }}
+                            className={isPinned ? "gold-active" : null}
+                        >
                             <i className="fas fa-thumbtack"></i>
                         </a>
                         <a href="#">
