@@ -111,8 +111,8 @@ function NoteList(props) {
             {!isArchive && (
                 <>
                     <AddNote addNote={addNote} />
-                    <button
-                        className="btn btn-info text-white btn-refresh"
+                    <a
+                        className="btn-refresh shadow"
                         id="rfrshBtn"
                         onClick={() => {
                             document
@@ -122,7 +122,7 @@ function NoteList(props) {
                         }}
                     >
                         <i className="fas fa-sync-alt"></i>
-                    </button>
+                    </a>
                 </>
             )}
             <div

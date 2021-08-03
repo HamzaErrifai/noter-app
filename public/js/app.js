@@ -2635,8 +2635,8 @@ function NoteList(props) {
     children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
         addNote: addNote
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "btn btn-info text-white btn-refresh",
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        className: "btn-refresh shadow",
         id: "rfrshBtn",
         onClick: function onClick() {
           document.getElementById("rfrshBtn").classList.remove("btn-refresh-show");
