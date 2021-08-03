@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Portal from "./inc/Portal";
 /**
  *  returns 1 if true or 0 if false
@@ -21,7 +21,7 @@ function Note(props) {
     const [isPinned, setIsPinned] = useState(data.pinned);
     const [isArchieved, setIsArchieved] = useState(data.archieved);
     //#endregion
-
+    
     //#region methods
     /**
      * Closes the portal

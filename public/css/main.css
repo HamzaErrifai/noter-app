@@ -209,6 +209,9 @@ body {
     border-radius: 50%;
     transition-duration: 400ms;
 }
+.btn-refresh:hover{
+    color: white;
+}
 .btn-refresh-show{
     visibility: visible;
 }
