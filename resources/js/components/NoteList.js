@@ -114,7 +114,9 @@ function NoteList(props) {
         <>
             {!isArchive && (
                 <>
-                    <AddNote addNote={addNote} />
+                    <div className="add-parent">
+                        <AddNote addNote={addNote} />
+                    </div>
                     <a
                         className="btn-refresh shadow"
                         id="rfrshBtn"

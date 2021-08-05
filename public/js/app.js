@@ -2665,8 +2665,11 @@ function NoteList(props) {
   var shownNotes = prepareNoteList();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
-        addNote: addNote
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "add-parent",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
+          addNote: addNote
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
         className: "btn-refresh shadow",
         id: "rfrshBtn",
@@ -2808,7 +2811,7 @@ function NavBar() {
 
   /**
    * sets the state "what" then opens the portal
-   * @param {String} val 
+   * @param {String} val
    */
 
 
@@ -2819,7 +2822,7 @@ function NavBar() {
   /**
    * Renders an element depending on "what" state
    * Default null
-   * 
+   *
    * @returns {JSX}
    */
 
@@ -2852,7 +2855,7 @@ function NavBar() {
   /**
    * sets the 'searchVal' state
    * then filters the list of Notes
-   * @param {Event} e 
+   * @param {Event} e
    */
 
 
@@ -2874,18 +2877,23 @@ function NavBar() {
     className: "navbar navbar-light",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "bg-blur"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
       className: "navbar-brand z-index-10",
       href: "#",
       onClick: function onClick() {
         return whatToshow("profile");
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
         src: "/storage/".concat(window.Laravel.user.photo),
         width: "30",
         height: "30",
-        className: "rounded-circle shadow bg-white"
-      })
+        className: "rounded-circle shadow bg-white",
+        id: "logo"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        href: "/",
+        className: "brand-name",
+        children: "NoterApp"
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       className: "form-control search-bar shadow-sm ml-auto mr-auto z-index-10",
       type: "search",

@@ -8,6 +8,13 @@ body {
     display: flex;
     flex-direction: column;
 }
+#logo {
+    width: 30px;
+    height: 30px;
+}
+.brand-name {
+    display: none;
+}
 
 .search-bar {
     width: 70%;
@@ -191,7 +198,7 @@ body {
     color: black !important;
     background-color: rgba(255, 255, 255, 0.652);
 }
-.btn-refresh{
+.btn-refresh {
     visibility: hidden;
     display: flex;
     align-items: center;
@@ -209,9 +216,82 @@ body {
     border-radius: 50%;
     transition-duration: 400ms;
 }
-.btn-refresh:hover{
+.btn-refresh:hover {
     color: white;
 }
-.btn-refresh-show{
+.btn-refresh-show {
     visibility: visible;
+}
+
+@media screen and (min-width: 700px) {
+    .search-bar {
+        width: 400px;
+    }
+    #logo {
+        width: 30px;
+        height: 30px;
+    }
+    .brand-name {
+        display: inline;
+        padding-left: 5px;
+        font-family: "Nunito";
+        color: tomato;
+        text-shadow: 0 0 white;
+        font-size: 1.2em;
+        animation: brandAnim 10s infinite;
+    }
+    @keyframes brandAnim {
+        0% {
+            color: #808080;
+        }
+        11% {
+            color: #135714;
+        }
+        22% {
+            color: #008b8b;
+        }
+        33% {
+            color: #1f385c;
+        }
+        44% {
+            color: #153465;
+        }
+        55% {
+            color: #341b4d;
+        }
+        66% {
+            color: #67160e;
+        }
+        77% {
+            color: #cca529;
+        }
+        88% {
+            color: #b45c18;
+        }
+        100% {
+            color: tomato;
+        }
+    }
+    .add-parent {
+        padding: 50px 0 0 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .add-container {
+        width: 500px;
+        height: 40px;
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        color: black;
+        font-size: 1.1em;
+        background-color: white;
+        border-radius: 5px;
+        transition-duration: 200ms;
+    }
+    .add-container:hover {
+        background-color: white;
+    }
 }

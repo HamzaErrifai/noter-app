@@ -16,7 +16,7 @@ function NavBar() {
     //#region methods
     /**
      * sets the state "what" then opens the portal
-     * @param {String} val 
+     * @param {String} val
      */
     const whatToshow = (val) => {
         setWhat(val);
@@ -25,7 +25,7 @@ function NavBar() {
     /**
      * Renders an element depending on "what" state
      * Default null
-     * 
+     *
      * @returns {JSX}
      */
     const getWhat = () => {
@@ -52,7 +52,7 @@ function NavBar() {
     /**
      * sets the 'searchVal' state
      * then filters the list of Notes
-     * @param {Event} e 
+     * @param {Event} e
      */
     const handleSearchChange = (e) => {
         e.preventDefault();
@@ -83,7 +83,11 @@ function NavBar() {
                     width="30"
                     height="30"
                     className="rounded-circle shadow bg-white"
+                    id="logo"
                 />
+                <span href="/" className="brand-name">
+                    NoterApp
+                </span>
             </a>
 
             <input
