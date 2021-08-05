@@ -11,6 +11,8 @@ function NavBar() {
     const [showPortal, setShowPortal] = useState(false);
     const [what, setWhat] = useState();
     const [searchVal, setSearchVal] = useState("");
+    let animationIn = "animate__fadeInUpBig";
+    let animationOut = "animate__fadeOutDownBig";
     //#endregion
 
     //#region methods
@@ -34,6 +36,8 @@ function NavBar() {
                 return <Profile />;
                 break;
             case "more":
+                animationIn = "animate__rotateInDownRight";
+                animationOut = "animate__rotateOutUpRight";
                 return <More />;
                 break;
             default:
@@ -112,6 +116,8 @@ function NavBar() {
                     title={what}
                     bgColor={"#343a40"}
                     closePortal={closePortal}
+                    animationIn={animationIn}
+                    animationOut={animationOut}
                 >
                     {getWhat()}
                 </Portal>

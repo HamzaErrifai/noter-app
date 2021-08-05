@@ -75,6 +75,7 @@ function AddNote(props) {
                     show={true}
                     bgColor={"#808080"}
                     closePortal={closePortal}
+                    title={"Create Note"}
                 >
                     <input
                         type="text"

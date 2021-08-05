@@ -15,10 +15,15 @@ function Portal(props) {
     const meta = document.getElementById("theme-color");
     meta.setAttribute("content", props.bgColor);
 
+    const {
+        animationIn = "animate__fadeInUpBig",
+        animationOut = "animate__fadeOutDownBig",
+    } = props;
+
     return ReactDOM.createPortal(
         <div
             id="portal"
-            className="portal-show animate__animated animate__fadeInUpBig animate__fast"
+            className={`portal-show animate__animated ${animationIn} animate__fast`}
             style={{ backgroundColor: props.bgColor }}
         >
             <h2 className="top-portal-panel shadow-sm">
@@ -27,15 +32,9 @@ function Portal(props) {
                     className="text-white ml-3"
                     onClick={() => {
                         const portal = document.getElementById("portal");
-                        portal.classList.replace(
-                            "animate__fadeInUpBig",
-                            "animate__fadeOutDownBig"
-                        );
+                        portal.classList.replace(animationIn, animationOut);
                         setTimeout(() => {
-                            portal.classList.replace(
-                                "animate__fadeOutDownBig",
-                                "animate__fadeInUpBig"
-                            );
+                            portal.classList.replace(animationOut, animationIn);
                             props.closePortal();
                         }, 100);
                     }}

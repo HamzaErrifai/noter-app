@@ -2036,6 +2036,7 @@ function AddNote(props) {
       show: true,
       bgColor: "#808080",
       closePortal: closePortal,
+      title: "Create Note",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         type: "text",
         className: "inp-area-note",
@@ -2812,14 +2813,16 @@ function NavBar() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       searchVal = _useState6[0],
-      setSearchVal = _useState6[1]; //#endregion
+      setSearchVal = _useState6[1];
+
+  var animationIn = "animate__fadeInUpBig";
+  var animationOut = "animate__fadeOutDownBig"; //#endregion
   //#region methods
 
   /**
    * sets the state "what" then opens the portal
    * @param {String} val
    */
-
 
   var whatToshow = function whatToshow(val) {
     setWhat(val);
@@ -2840,6 +2843,8 @@ function NavBar() {
         break;
 
       case "more":
+        animationIn = "animate__rotateInDownRight";
+        animationOut = "animate__rotateOutUpRight";
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_More__WEBPACK_IMPORTED_MODULE_1__.default, {});
         break;
 
@@ -2921,6 +2926,8 @@ function NavBar() {
       title: what,
       bgColor: "#343a40",
       closePortal: closePortal,
+      animationIn: animationIn,
+      animationOut: animationOut,
       children: getWhat()
     })]
   });
@@ -2963,9 +2970,13 @@ var capitalize = function capitalize(str) {
 function Portal(props) {
   var meta = document.getElementById("theme-color");
   meta.setAttribute("content", props.bgColor);
+  var _props$animationIn = props.animationIn,
+      animationIn = _props$animationIn === void 0 ? "animate__fadeInUpBig" : _props$animationIn,
+      _props$animationOut = props.animationOut,
+      animationOut = _props$animationOut === void 0 ? "animate__fadeOutDownBig" : _props$animationOut;
   return /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     id: "portal",
-    className: "portal-show animate__animated animate__fadeInUpBig animate__fast",
+    className: "portal-show animate__animated ".concat(animationIn, " animate__fast"),
     style: {
       backgroundColor: props.bgColor
     },
@@ -2976,9 +2987,9 @@ function Portal(props) {
         className: "text-white ml-3",
         onClick: function onClick() {
           var portal = document.getElementById("portal");
-          portal.classList.replace("animate__fadeInUpBig", "animate__fadeOutDownBig");
+          portal.classList.replace(animationIn, animationOut);
           setTimeout(function () {
-            portal.classList.replace("animate__fadeOutDownBig", "animate__fadeInUpBig");
+            portal.classList.replace(animationOut, animationIn);
             props.closePortal();
           }, 100);
         },
