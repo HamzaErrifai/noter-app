@@ -71,10 +71,10 @@ function NavBar() {
     };
     //#endregion
     return (
-        <nav className="navbar navbar-light">
+        <nav className="navbar navbar-light border-bottom bg-white">
             <div className="bg-blur"></div>
             <a
-                className="navbar-brand z-index-10"
+                className="navbar-brand z-index-10 d-flex align-self-center"
                 href="#"
                 onClick={() => whatToshow("profile")}
             >

@@ -48,7 +48,7 @@ body {
     -ms-filter: blur(20px);
     filter: blur(20px);
 }
-.create-note-div{
+.create-note-div {
     display: none;
 }
 .add-container {
@@ -227,7 +227,7 @@ body {
 
 @media screen and (min-width: 700px) {
     .search-bar {
-        width: 400px;
+        width: 600px;
     }
     #logo {
         width: 30px;
@@ -246,7 +246,6 @@ body {
         padding-left: 5px;
         font-family: "Nunito";
         color: tomato;
-        text-shadow: 0 0 white;
         font-size: 1.2em;
         animation: brandAnim 10s infinite;
     }
@@ -282,7 +281,7 @@ body {
             color: tomato;
         }
     }
-    .add-parent {
+    .btns-parent {
         padding: 50px 0 0 0;
         width: 100%;
         display: flex;
@@ -303,5 +302,15 @@ body {
     }
     .add-container:hover {
         background-color: white;
+    }
+
+    .btn-refresh {
+        position: relative;
+        height: 40px;
+        left: 20px;
+        text-align: center;
+        background-color: darkcyan;
+        border-radius: 5px;
+        transition-duration: 200ms;
     }
 }

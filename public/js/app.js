@@ -2670,23 +2670,23 @@ function NoteList(props) {
 
   var shownNotes = prepareNoteList();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "add-parent",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
+    children: [!isArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "btns-parent",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AddNote__WEBPACK_IMPORTED_MODULE_1__.default, {
           addNote: addNote
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-        className: "btn-refresh shadow",
-        id: "rfrshBtn",
-        onClick: function onClick() {
-          document.getElementById("rfrshBtn").classList.remove("btn-refresh-show");
-          fetchDataFromApi();
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-          className: "fas fa-sync-alt"
-        })
-      })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+          className: "btn-refresh shadow",
+          id: "rfrshBtn",
+          onClick: function onClick() {
+            document.getElementById("rfrshBtn").classList.remove("btn-refresh-show");
+            fetchDataFromApi();
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+            className: "fas fa-sync-alt"
+          })
+        })]
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "container mt-1 d-flex justify-content-center flex-column note-list",
       id: "note-list",
@@ -2880,11 +2880,11 @@ function NavBar() {
 
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
-    className: "navbar navbar-light",
+    className: "navbar navbar-light border-bottom bg-white",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "bg-blur"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
-      className: "navbar-brand z-index-10",
+      className: "navbar-brand z-index-10 d-flex align-self-center",
       href: "#",
       onClick: function onClick() {
         return whatToshow("profile");

@@ -114,10 +114,9 @@ function NoteList(props) {
         <>
             {!isArchive && (
                 <>
-                    <div className="add-parent">
+                    <div className="btns-parent">
                         <AddNote addNote={addNote} />
-                    </div>
-                    <a
+                        <a
                         className="btn-refresh shadow"
                         id="rfrshBtn"
                         onClick={() => {
@@ -129,6 +128,8 @@ function NoteList(props) {
                     >
                         <i className="fas fa-sync-alt"></i>
                     </a>
+                    </div>
+                    
                 </>
             )}
             <div
