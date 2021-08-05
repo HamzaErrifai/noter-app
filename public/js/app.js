@@ -2024,8 +2024,14 @@ function AddNote(props) {
     onClick: function onClick() {
       setShowPortal(true);
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-      className: "fas fa-plus"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "create-note-div",
+      children: "Create Note..."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+      className: "plus-parent",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+        className: "fas fa-plus"
+      })
     }), showPortal ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inc_Portal__WEBPACK_IMPORTED_MODULE_2__.default, {
       show: true,
       bgColor: "#808080",

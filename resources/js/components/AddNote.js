@@ -65,7 +65,11 @@ function AddNote(props) {
                 setShowPortal(true);
             }}
         >
-            <i className="fas fa-plus"></i>
+            <div className="create-note-div">Create Note...</div>
+
+            <span className="plus-parent">
+                <i className="fas fa-plus"></i>
+            </span>
             {showPortal ? (
                 <Portal
                     show={true}
